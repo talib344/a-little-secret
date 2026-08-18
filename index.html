@@ -8,16 +8,33 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 
 <style>
+
+/* =====================================================
+   ROOT
+===================================================== */
+
 :root{
     --pink:#e95d96;
-    --pink2:#f58db5;
+    --pink-light:#f58db5;
     --purple:#9b7bea;
+
     --dark:#321d32;
+    --dark-soft:#45263f;
+
     --muted:#765c73;
+    --muted-light:#9b7b92;
+
+    --white-glass:rgba(255,255,255,.72);
 }
+
+
+/* =====================================================
+   RESET
+===================================================== */
 
 *{
     margin:0;
@@ -30,72 +47,118 @@ html{
 }
 
 body{
+
     min-height:100vh;
+
     font-family:"DM Sans",sans-serif;
+
     color:var(--dark);
+
     overflow-x:hidden;
 
     background:
-        radial-gradient(circle at 10% 10%,rgba(255,177,211,.55),transparent 30%),
-        radial-gradient(circle at 90% 20%,rgba(196,178,255,.5),transparent 30%),
-        radial-gradient(circle at 50% 100%,rgba(255,204,224,.45),transparent 35%),
+
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(255,177,211,.55),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(196,178,255,.5),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(255,204,224,.45),
+            transparent 35%
+        ),
+
         #fff8fc;
 }
 
-/* =========================
+
+/* =====================================================
    CINEMATIC INTRO
-========================= */
+===================================================== */
 
 #cinematic{
+
     position:fixed;
+
     inset:0;
+
     z-index:9999;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     text-align:center;
 
     background:
+
         radial-gradient(
             circle at 50% 45%,
             rgba(225,83,143,.18),
             transparent 32%
         ),
+
         #160f18;
 
-    transition:opacity 1.2s ease,
-               visibility 1.2s ease;
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
 }
 
 #cinematic.hide{
+
     opacity:0;
+
     visibility:hidden;
+
     pointer-events:none;
 }
 
 .cinematic-content{
+
     width:90%;
+
     max-width:650px;
 }
 
 .cinematic-line{
+
     color:#f2c9dc;
-    font-size:clamp(16px,3vw,21px);
+
+    font-size:
+        clamp(16px,3vw,21px);
+
     line-height:1.8;
 
     opacity:0;
 
-    animation:fadeIn 1.8s ease forwards;
+    animation:
+        fadeIn 1.8s ease forwards;
 }
 
 .cinematic-name{
+
     margin-top:22px;
 
-    font-family:"Playfair Display",serif;
-    font-size:clamp(60px,13vw,105px);
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(60px,13vw,105px);
 
     background:
+
         linear-gradient(
             120deg,
             #ffb0d0,
@@ -105,138 +168,207 @@ body{
 
     -webkit-background-clip:text;
     background-clip:text;
+
     color:transparent;
 
     opacity:0;
+
     transform:translateY(25px);
 
-    animation:nameIn 1.8s ease 1.6s forwards;
+    animation:
+        nameIn 1.8s ease 1.6s forwards;
 }
 
 .cinematic-small{
+
     margin-top:20px;
 
     color:#aa91a4;
+
     font-size:10px;
+
     letter-spacing:4px;
+
     text-transform:uppercase;
 
     opacity:0;
 
-    animation:fadeIn 1.8s ease 3.3s forwards;
+    animation:
+        fadeIn 1.8s ease 3.3s forwards;
 }
 
 @keyframes fadeIn{
+
     to{
         opacity:1;
     }
 }
 
 @keyframes nameIn{
+
     to{
         opacity:1;
         transform:translateY(0);
     }
 }
 
-/* =========================
+
+/* =====================================================
    FLOATING HEARTS
-========================= */
+===================================================== */
 
 #floating-hearts{
+
     position:fixed;
+
     inset:0;
+
     overflow:hidden;
+
     pointer-events:none;
+
     z-index:5;
 }
 
 .heart{
+
     position:absolute;
+
     bottom:-50px;
+
     opacity:0;
-    animation:floatHeart linear forwards;
+
+    animation:
+        floatHeart linear forwards;
 }
 
 @keyframes floatHeart{
+
     0%{
-        transform:translateY(0) rotate(0);
+
+        transform:
+            translateY(0)
+            rotate(0);
+
         opacity:0;
     }
 
     15%{
+
         opacity:.45;
     }
 
     100%{
-        transform:translateY(-115vh) rotate(35deg);
+
+        transform:
+            translateY(-115vh)
+            rotate(35deg);
+
         opacity:0;
     }
 }
 
-/* =========================
-   PAGE
-========================= */
+
+/* =====================================================
+   MAIN PAGE
+===================================================== */
 
 .page{
+
     position:relative;
+
     z-index:2;
 
     width:min(900px,92%);
+
     margin:auto;
 
-    padding:35px 0 80px;
+    padding:
+        35px
+        0
+        80px;
 }
 
+
+/* =====================================================
+   GLASS
+===================================================== */
+
 .glass{
-    background:rgba(255,255,255,.72);
 
-    border:1px solid rgba(255,255,255,.85);
+    background:
+        var(--white-glass);
 
-    backdrop-filter:blur(25px);
-    -webkit-backdrop-filter:blur(25px);
+    border:
+        1px solid
+        rgba(255,255,255,.85);
+
+    backdrop-filter:
+        blur(25px);
+
+    -webkit-backdrop-filter:
+        blur(25px);
 
     border-radius:34px;
 
     box-shadow:
-        0 25px 80px rgba(103,55,93,.10),
-        inset 0 1px 0 rgba(255,255,255,.8);
+
+        0 25px 80px
+        rgba(103,55,93,.10),
+
+        inset 0 1px 0
+        rgba(255,255,255,.8);
 }
 
-/* =========================
+
+/* =====================================================
    HERO
-========================= */
+===================================================== */
 
 .hero{
-    min-height:calc(100vh - 70px);
+
+    min-height:
+        calc(100vh - 70px);
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     text-align:center;
 }
 
 .hero-card{
+
     width:100%;
-    padding:70px 30px;
+
+    padding:
+        70px
+        30px;
 }
 
 .heart-icon{
+
     width:92px;
+
     height:92px;
 
-    margin:0 auto 28px;
+    margin:
+        0 auto 28px;
 
     border-radius:28px;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     font-size:42px;
 
     background:
+
         linear-gradient(
             135deg,
             rgba(255,255,255,.9),
@@ -244,12 +376,16 @@ body{
         );
 
     box-shadow:
-        0 18px 45px rgba(221,93,148,.18);
 
-    animation:pulse 2.5s infinite;
+        0 18px 45px
+        rgba(221,93,148,.18);
+
+    animation:
+        pulse 2.5s infinite;
 }
 
 @keyframes pulse{
+
     0%,100%{
         transform:scale(1);
     }
@@ -260,22 +396,36 @@ body{
 }
 
 .mini-label{
+
     font-size:10px;
+
     letter-spacing:4px;
+
     text-transform:uppercase;
+
     color:#ae648a;
+
     font-weight:700;
 }
 
 .hero h1{
-    margin:20px 0 16px;
 
-    font-family:"Playfair Display",serif;
-    font-size:clamp(55px,10vw,90px);
+    margin:
+        20px
+        0
+        16px;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(55px,10vw,90px);
 
     line-height:1;
 
     background:
+
         linear-gradient(
             120deg,
             #d94f8b,
@@ -285,43 +435,57 @@ body{
 
     -webkit-background-clip:text;
     background-clip:text;
+
     color:transparent;
 }
 
 .hero-description{
+
     max-width:560px;
 
-    margin:0 auto 32px;
+    margin:
+        0 auto
+        32px;
 
     color:var(--muted);
 
     font-size:16px;
+
     line-height:1.9;
 }
 
-/* =========================
+
+/* =====================================================
    BUTTONS
-========================= */
+===================================================== */
 
 .btn{
+
     border:0;
+
     cursor:pointer;
 
-    padding:16px 27px;
+    padding:
+        16px
+        27px;
 
     border-radius:17px;
 
     font-family:inherit;
+
     font-size:14px;
+
     font-weight:700;
 
     transition:.3s ease;
 }
 
 .primary-btn{
+
     color:white;
 
     background:
+
         linear-gradient(
             135deg,
             #ed629c,
@@ -329,112 +493,121 @@ body{
         );
 
     box-shadow:
-        0 12px 30px rgba(209,83,145,.25);
+
+        0 12px 30px
+        rgba(209,83,145,.25);
 }
 
 .primary-btn:hover{
-    transform:translateY(-4px);
+
+    transform:
+        translateY(-4px);
 
     box-shadow:
-        0 18px 35px rgba(209,83,145,.32);
+
+        0 18px 35px
+        rgba(209,83,145,.32);
 }
 
 .secondary-btn{
+
     color:#87516f;
 
-    background:rgba(255,255,255,.75);
+    background:
+        rgba(255,255,255,.75);
 
-    border:1px solid rgba(221,175,201,.5);
+    border:
+        1px solid
+        rgba(221,175,201,.5);
 }
 
 .secondary-btn:hover{
-    transform:translateY(-3px);
+
+    transform:
+        translateY(-3px);
+
     background:white;
 }
 
-/* =========================
-   MUSIC
-========================= */
 
-.music-btn{
-    position:fixed;
-
-    right:20px;
-    bottom:20px;
-
-    z-index:100;
-
-    border:1px solid rgba(255,255,255,.85);
-
-    background:rgba(255,255,255,.72);
-
-    backdrop-filter:blur(15px);
-
-    color:#87516f;
-
-    padding:12px 17px;
-
-    border-radius:50px;
-
-    cursor:pointer;
-
-    font-weight:700;
-    font-size:12px;
-
-    box-shadow:
-        0 10px 30px rgba(100,50,100,.12);
-
-    transition:.3s;
-}
-
-.music-btn:hover{
-    transform:translateY(-3px);
-}
-
-/* =========================
-   SECTIONS
-========================= */
+/* =====================================================
+   HIDDEN
+===================================================== */
 
 .hidden{
-    display:none!important;
+
+    display:none !important;
 }
 
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+
 .section{
+
     margin-top:28px;
-    padding:50px 30px;
+
+    padding:
+        50px
+        30px;
+
     text-align:center;
 }
 
 .section-label{
+
     color:#ad668a;
+
     font-size:10px;
+
     letter-spacing:3px;
+
     text-transform:uppercase;
+
     font-weight:700;
 }
 
 .section-title{
-    font-family:"Playfair Display",serif;
-    font-size:clamp(32px,6vw,48px);
-    margin:12px 0 28px;
-    color:#45263f;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(32px,6vw,48px);
+
+    margin:
+        12px
+        0
+        28px;
+
+    color:var(--dark-soft);
 }
 
-/* =========================
+
+/* =====================================================
    KINETEX
-========================= */
+===================================================== */
 
 .kinetex{
+
     padding:0;
+
     overflow:hidden;
 }
 
 .kinetex-head{
-    padding:55px 30px 40px;
+
+    padding:
+        55px
+        30px
+        40px;
 
     text-align:center;
 
     background:
+
         linear-gradient(
             135deg,
             rgba(255,221,235,.82),
@@ -443,51 +616,75 @@ body{
 }
 
 .kinetex-badge{
+
     display:inline-block;
 
-    padding:8px 15px;
+    padding:
+        8px
+        15px;
 
     border-radius:50px;
 
-    background:rgba(255,255,255,.65);
+    background:
+        rgba(255,255,255,.65);
 
     color:#a75b82;
 
     font-size:10px;
+
     letter-spacing:2px;
+
     text-transform:uppercase;
 }
 
 .kinetex-title{
+
     margin-top:18px;
 
-    font-family:"Playfair Display",serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
-    font-size:clamp(32px,6vw,48px);
+    font-size:
+        clamp(32px,6vw,48px);
 
     color:#4a2943;
 }
 
 .kinetex-text{
+
     max-width:560px;
 
-    margin:15px auto 0;
+    margin:
+        15px
+        auto
+        0;
 
     color:#72596c;
 
     font-size:15px;
+
     line-height:1.8;
 }
 
+
+/* =====================================================
+   TIMELINE
+===================================================== */
+
 .timeline{
+
     padding:35px;
 }
 
 .timeline-item{
+
     position:relative;
 
     display:grid;
-    grid-template-columns:30px 1fr;
+
+    grid-template-columns:
+        30px 1fr;
 
     gap:18px;
 
@@ -495,16 +692,20 @@ body{
 }
 
 .timeline-item:last-child{
+
     padding-bottom:0;
 }
 
 .timeline-item::after{
+
     content:"";
 
     position:absolute;
 
     left:14px;
+
     top:30px;
+
     bottom:0;
 
     width:1px;
@@ -513,11 +714,14 @@ body{
 }
 
 .timeline-item:last-child::after{
+
     display:none;
 }
 
 .dot{
+
     width:12px;
+
     height:12px;
 
     margin-top:6px;
@@ -527,13 +731,18 @@ body{
     background:#e46b9d;
 
     box-shadow:
-        0 0 0 7px rgba(228,107,157,.12);
+
+        0 0 0 7px
+        rgba(228,107,157,.12);
 
     z-index:2;
 }
 
 .timeline-content h3{
-    font-family:"Playfair Display",serif;
+
+    font-family:
+        "Playfair Display",
+        serif;
 
     color:#8e4e71;
 
@@ -543,6 +752,7 @@ body{
 }
 
 .timeline-content p{
+
     color:#765d70;
 
     font-size:14px;
@@ -550,155 +760,148 @@ body{
     line-height:1.8;
 }
 
-/* =========================
+
+/* =====================================================
    LETTER
-========================= */
+===================================================== */
 
 .letter{
+
     max-width:650px;
+
     margin:auto;
+
     text-align:left;
 }
 
 .letter p{
+
     font-size:16px;
+
     line-height:1.95;
+
     color:#644b60;
+
     margin-bottom:17px;
 }
 
 .letter .special{
+
     color:#d34f88;
 
-    font-family:"Playfair Display",serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
     font-size:24px;
 
     font-style:italic;
 }
 
-/* =========================
-   MOMENT CARDS
-========================= */
 
-.moments{
-    display:grid;
+/* =====================================================
+   FOUR LINE POETRY
+===================================================== */
 
-    grid-template-columns:repeat(2,1fr);
+.poetry-section{
 
-    gap:15px;
-
-    max-width:720px;
-
-    margin:auto;
-}
-
-.moment{
     position:relative;
-
-    min-height:175px;
-
-    padding:27px 21px;
-
-    border-radius:25px;
-
-    background:rgba(255,255,255,.55);
-
-    border:1px solid rgba(255,255,255,.85);
-
-    text-align:left;
-
-    cursor:pointer;
-
-    transition:.35s ease;
-}
-
-.moment:hover{
-    transform:translateY(-5px);
-
-    background:rgba(255,255,255,.88);
-
-    box-shadow:
-        0 18px 40px rgba(100,50,100,.10);
-}
-
-.moment-number{
-    color:#b27193;
-
-    font-size:10px;
-
-    letter-spacing:2px;
-}
-
-.moment h3{
-    margin:11px 0 8px;
-
-    font-family:"Playfair Display",serif;
-
-    color:#864c70;
-
-    font-size:20px;
-}
-
-.moment-preview{
-    color:#8b7383;
-
-    font-size:13px;
-
-    line-height:1.6;
-}
-
-.moment-hidden{
-    max-height:0;
 
     overflow:hidden;
 
-    opacity:0;
-
-    transition:
-        max-height .5s ease,
-        opacity .5s ease;
-}
-
-.moment.open .moment-hidden{
-    max-height:180px;
-
-    opacity:1;
-
-    margin-top:13px;
-}
-
-.moment.open{
     background:
+
         linear-gradient(
             135deg,
-            rgba(255,230,240,.9),
-            rgba(238,228,255,.85)
+            rgba(255,228,240,.68),
+            rgba(235,226,255,.68)
         );
 }
 
-.tap{
+.poetry-section::before{
+
+    content:"♡";
+
     position:absolute;
 
-    right:17px;
-    bottom:15px;
+    top:-35px;
 
-    color:#b26b91;
+    right:25px;
 
-    font-size:10px;
+    font-size:150px;
+
+    color:
+        rgba(220,100,150,.06);
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    pointer-events:none;
 }
 
-/* =========================
-   QUOTE
-========================= */
+.poetry{
 
-.quote{
+    position:relative;
+
     max-width:650px;
+
     margin:auto;
 
-    font-family:"Playfair Display",serif;
+    padding:
+        15px
+        10px;
 
-    font-size:clamp(24px,5vw,35px);
+    text-align:center;
+}
+
+.poetry p{
+
+    margin:
+        12px
+        0;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(19px,4vw,27px);
+
+    line-height:1.65;
+
+    font-style:italic;
+
+    color:#68445e;
+}
+
+.poetry p:last-child{
+
+    margin-top:22px;
+
+    color:#d14f88;
+
+    font-size:
+        clamp(21px,4.5vw,30px);
+}
+
+
+/* =====================================================
+   QUOTE
+===================================================== */
+
+.quote{
+
+    max-width:650px;
+
+    margin:auto;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(24px,5vw,35px);
 
     line-height:1.5;
 
@@ -708,14 +911,17 @@ body{
 }
 
 .quote span{
+
     color:#d94f8b;
 }
 
-/* =========================
-   CONFESSION PAUSE
-========================= */
+
+/* =====================================================
+   EMOTIONAL PAUSE
+===================================================== */
 
 .pause-box{
+
     min-height:230px;
 
     display:flex;
@@ -730,27 +936,38 @@ body{
 }
 
 .pause-line{
-    font-family:"Playfair Display",serif;
 
-    font-size:clamp(25px,5vw,38px);
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(25px,5vw,38px);
 
     color:#68405d;
 
     opacity:0;
 
-    transform:translateY(15px);
+    transform:
+        translateY(15px);
 
     transition:
+
         opacity 1s ease,
+
         transform 1s ease;
 }
 
 .pause-line.show{
+
     opacity:1;
-    transform:translateY(0);
+
+    transform:
+        translateY(0);
 }
 
 .pause-small{
+
     margin-top:15px;
 
     color:#97748b;
@@ -759,21 +976,28 @@ body{
 
     opacity:0;
 
-    transition:opacity 1s ease;
+    transition:
+        opacity 1s ease;
 }
 
 .pause-small.show{
+
     opacity:1;
 }
 
-/* =========================
+
+/* =====================================================
    PROPOSAL
-========================= */
+===================================================== */
 
 .proposal{
-    padding:65px 25px;
+
+    padding:
+        65px
+        25px;
 
     background:
+
         linear-gradient(
             135deg,
             rgba(255,221,235,.82),
@@ -782,19 +1006,28 @@ body{
 }
 
 .proposal h2{
-    margin:12px 0;
 
-    font-family:"Playfair Display",serif;
+    margin:
+        12px
+        0;
 
-    font-size:clamp(40px,8vw,60px);
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(40px,8vw,60px);
 
     color:#4b2944;
 }
 
 .proposal-text{
+
     max-width:570px;
 
-    margin:0 auto 30px;
+    margin:
+        0 auto
+        30px;
 
     color:#6d5367;
 
@@ -804,9 +1037,12 @@ body{
 }
 
 .question{
+
     margin-bottom:25px;
 
-    font-family:"Playfair Display",serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
     font-size:28px;
 
@@ -814,9 +1050,12 @@ body{
 }
 
 .choice-note{
+
     max-width:450px;
 
-    margin:22px auto 0;
+    margin:
+        22px auto
+        0;
 
     color:#9b7089;
 
@@ -827,17 +1066,20 @@ body{
     font-style:italic;
 }
 
-/* =========================
-   SECRET
-========================= */
+
+/* =====================================================
+   SECRET P.S.
+===================================================== */
 
 .secret{
+
     margin-top:30px;
 
     text-align:center;
 }
 
 .secret button{
+
     border:0;
 
     background:none;
@@ -854,6 +1096,7 @@ body{
 }
 
 .secret-message{
+
     max-height:0;
 
     overflow:hidden;
@@ -861,18 +1104,23 @@ body{
     opacity:0;
 
     transition:
+
         max-height .8s ease,
+
         opacity .8s ease;
 }
 
 .secret-message.show{
+
     max-height:300px;
 
     opacity:1;
 
     margin-top:20px;
 
-    font-family:"Playfair Display",serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
     font-size:20px;
 
@@ -883,11 +1131,13 @@ body{
     color:#75445f;
 }
 
-/* =========================
-   SUCCESS
-========================= */
+
+/* =====================================================
+   SUCCESS SCREEN
+===================================================== */
 
 .success{
+
     min-height:90vh;
 
     display:flex;
@@ -900,45 +1150,69 @@ body{
 }
 
 .success-card{
+
     width:100%;
 
-    padding:70px 30px;
+    padding:
+        70px
+        30px;
 
-    animation:successIn 1.2s ease;
+    animation:
+        successIn 1.2s ease;
 }
 
 @keyframes successIn{
+
     from{
+
         opacity:0;
-        transform:translateY(35px) scale(.96);
+
+        transform:
+            translateY(35px)
+            scale(.96);
     }
 
     to{
+
         opacity:1;
-        transform:translateY(0) scale(1);
+
+        transform:
+            translateY(0)
+            scale(1);
     }
 }
 
 .success-heart{
+
     font-size:80px;
 
-    animation:pulse 1.5s infinite;
+    animation:
+        pulse 1.5s infinite;
 }
 
 .success h1{
-    margin:15px 0;
 
-    font-family:"Playfair Display",serif;
+    margin:
+        15px
+        0;
 
-    font-size:clamp(42px,8vw,70px);
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(42px,8vw,70px);
 
     color:#d64e8b;
 }
 
 .success-subtitle{
+
     margin-bottom:27px;
 
-    font-family:"Playfair Display",serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
     font-style:italic;
 
@@ -948,6 +1222,7 @@ body{
 }
 
 .success p{
+
     max-width:600px;
 
     margin:auto;
@@ -960,22 +1235,29 @@ body{
 }
 
 .names{
+
     margin-top:32px;
 
-    font-family:"Playfair Display",serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
     font-size:28px;
 
-    color:#d14d87;
+    color:#d14f87;
 }
 
 .names span{
-    margin:0 10px;
+
+    margin:
+        0
+        10px;
 
     color:#b18ba4;
 }
 
 .signature{
+
     margin-top:25px;
 
     color:#8d627c;
@@ -983,11 +1265,13 @@ body{
     font-size:12px;
 }
 
-/* =========================
+
+/* =====================================================
    FOOTER
-========================= */
+===================================================== */
 
 footer{
+
     margin-top:30px;
 
     text-align:center;
@@ -997,70 +1281,126 @@ footer{
     font-size:12px;
 }
 
-/* =========================
+
+/* =====================================================
    MOBILE
-========================= */
+===================================================== */
 
 @media(max-width:700px){
 
     .page{
+
         width:94%;
     }
 
     .hero-card{
-        padding:55px 20px;
+
+        padding:
+            55px
+            20px;
     }
 
     .section{
-        padding:40px 20px;
-    }
 
-    .moments{
-        grid-template-columns:1fr;
+        padding:
+            40px
+            20px;
     }
 
     .timeline{
-        padding:30px 20px;
+
+        padding:
+            30px
+            20px;
     }
 
     .letter p{
+
         font-size:15.5px;
     }
 
     .btn{
+
         width:100%;
+
         max-width:280px;
-        margin:5px auto;
+
+        margin:
+            5px
+            auto;
     }
 
-    .music-btn{
-        right:15px;
-        bottom:15px;
+    .poetry p{
+
+        font-size:19px;
     }
+
 }
+
+
+/* =====================================================
+   SMALL PHONES
+===================================================== */
+
+@media(max-width:400px){
+
+    .hero h1{
+
+        font-size:58px;
+    }
+
+    .heart-icon{
+
+        width:78px;
+
+        height:78px;
+
+        font-size:34px;
+    }
+
+    .timeline-content h3{
+
+        font-size:18px;
+    }
+
+    .proposal h2{
+
+        font-size:43px;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
-<!-- =========================
-     CINEMATIC INTRO
-========================= -->
+
+<!-- =====================================================
+     CINEMATIC OPENING
+===================================================== -->
 
 <div id="cinematic">
 
     <div class="cinematic-content">
 
         <div class="cinematic-line">
+
             Zahreen, kuch moments sirf moments nahi hote...
+
         </div>
 
         <div class="cinematic-name">
+
             Zahreen
+
         </div>
 
         <div class="cinematic-small">
+
             Ek baat jo dil mein thi
+
         </div>
 
     </div>
@@ -1068,52 +1408,51 @@ footer{
 </div>
 
 
-<!-- =========================
-     HEARTS
-========================= -->
+<!-- =====================================================
+     FLOATING HEARTS
+===================================================== -->
 
 <div id="floating-hearts"></div>
 
 
-<!-- =========================
-     MUSIC
-========================= -->
-
-<audio id="music" loop preload="none">
-    <source src="music.mp3" type="audio/mpeg">
-</audio>
-
-<button
-    id="musicButton"
-    class="music-btn"
-    onclick="toggleMusic()">
-
-    ♫ Play this moment
-
-</button>
-
+<!-- =====================================================
+     MAIN
+===================================================== -->
 
 <main class="page">
 
-<!-- =========================
-     HERO
-========================= -->
 
-<section id="hero" class="hero">
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section
+    id="hero"
+    class="hero">
 
     <div class="glass hero-card">
 
+
         <div class="heart-icon">
+
             💗
+
         </div>
+
 
         <div class="mini-label">
+
             Ek choti si baat...
+
         </div>
 
+
         <h1>
+
             Zahreen
+
         </h1>
+
 
         <p class="hero-description">
 
@@ -1127,6 +1466,7 @@ footer{
 
         </p>
 
+
         <button
             class="btn primary-btn"
             onclick="startStory()">
@@ -1135,31 +1475,45 @@ footer{
 
         </button>
 
+
     </div>
 
 </section>
 
 
-<!-- =========================
+
+<!-- =====================================================
      STORY
-========================= -->
+===================================================== -->
 
-<section id="story" class="hidden">
+<section
+    id="story"
+    class="hidden">
 
 
-<!-- KINETEX -->
+<!-- =====================================================
+     KINETEX SECTION
+===================================================== -->
 
 <div class="glass section kinetex">
 
+
     <div class="kinetex-head">
 
+
         <div class="kinetex-badge">
+
             The beginning
+
         </div>
 
+
         <div class="kinetex-title">
+
             The Day I First Noticed You
+
         </div>
+
 
         <p class="kinetex-text">
 
@@ -1168,7 +1522,9 @@ footer{
 
         </p>
 
+
     </div>
+
 
 
     <div class="timeline">
@@ -1178,15 +1534,21 @@ footer{
 
             <div class="dot"></div>
 
+
             <div class="timeline-content">
 
                 <h3>
+
                     Pehli Baar
+
                 </h3>
 
+
                 <p>
+
                     Jab maine tumhein pehli baar
                     KineTex mein dekha.
+
                 </p>
 
             </div>
@@ -1194,20 +1556,27 @@ footer{
         </div>
 
 
+
         <div class="timeline-item">
 
             <div class="dot"></div>
 
+
             <div class="timeline-content">
 
                 <h3>
+
                     Kuch Alag Mehsoos Hua
+
                 </h3>
 
+
                 <p>
+
                     Mujhe khud nahi pata kyun,
                     lekin us waqt mujhe kuch
                     alag sa mehsoos hua.
+
                 </p>
 
             </div>
@@ -1215,20 +1584,27 @@ footer{
         </div>
 
 
+
         <div class="timeline-item">
 
             <div class="dot"></div>
 
+
             <div class="timeline-content">
 
                 <h3>
+
                     Woh Chota Sa Moment
+
                 </h3>
 
+
                 <p>
+
                     Shayad tumhare liye normal tha,
                     lekin pata nahi kyun
                     woh moment mere mind mein reh gaya.
+
                 </p>
 
             </div>
@@ -1236,20 +1612,27 @@ footer{
         </div>
 
 
+
         <div class="timeline-item">
 
             <div class="dot"></div>
 
+
             <div class="timeline-content">
 
                 <h3>
+
                     Phir Dheere Dheere...
+
                 </h3>
 
+
                 <p>
+
                     Mujhe samajh aane laga ke
                     tum mere liye sirf ek normal
                     person nahi rahi.
+
                 </p>
 
             </div>
@@ -1262,189 +1645,136 @@ footer{
 </div>
 
 
-<!-- SHORT REAL MESSAGE -->
+
+<!-- =====================================================
+     NATURAL MESSAGE
+===================================================== -->
 
 <div class="glass section">
 
+
     <div class="section-label">
+
         Sach bolun?
+
     </div>
 
+
     <h2 class="section-title">
+
         Mujhe Khud Nahi Pata Tha...
+
     </h2>
+
 
     <div class="letter">
 
-        <p>
-            Sach bolun Zahreen, mujhe khud nahi pata tha
-            ke tum mujhe itni achi lagne lago gi.
-        </p>
 
         <p>
+
+            Sach bolun Zahreen, mujhe khud nahi pata tha
+            ke tum mujhe itni achi lagne lago gi.
+
+        </p>
+
+
+        <p>
+
             Pehli baar KineTex mein tumhein dekha to
             bas ek ajeeb si feeling hui.
             Koi proper reason nahi tha...
             bas tum kuch different lagi.
+
         </p>
 
+
         <p>
+
             Phir dheere dheere tumhari choti choti
             cheezein notice hone lagin.
             Tumhari smile, tumhara andaaz,
             aur tumhari presence.
+
         </p>
 
+
         <p>
+
             Kabhi kabhi bina kisi reason ke
             tumhara khayal aa jata tha.
             Aur phir main khud se poochta tha...
+
         </p>
 
+
         <p>
+
             <span class="special">
+
                 "Mujhe Zahreen itni achi kyun lagti hai?"
+
             </span>
+
         </p>
+
 
     </div>
 
 </div>
 
 
-<!-- INTERACTIVE CARDS -->
 
-<div class="glass section">
+<!-- =====================================================
+     FOUR LINE POETRY
+===================================================== -->
+
+<div class="glass section poetry-section">
+
 
     <div class="section-label">
-        Tap to open
+
+        Ek choti si feeling...
+
     </div>
 
+
     <h2 class="section-title">
-        Kuch Little Moments...
+
+        Shayad Tumhein Pata Na Ho ❤️
+
     </h2>
 
 
-    <div class="moments">
+    <div class="poetry">
 
 
-        <div
-            class="moment"
-            onclick="toggleMoment(this)">
+        <p>
 
-            <div class="moment-number">
-                01 / FIRST
-            </div>
+            Tumhein pehli baar dekha to kuch alag sa laga,
 
-            <h3>
-                Pehli Baar Tum Notice Hui
-            </h3>
-
-            <p class="moment-preview">
-                KineTex ka woh moment...
-            </p>
-
-            <div class="moment-hidden">
-                Mujhe nahi pata tha ke ek normal
-                si mulaqat mere liye itni memorable
-                ban jayegi. Bas tumhein dekha aur
-                dil ne kaha — is larki mein kuch alag hai.
-            </div>
-
-            <div class="tap">
-                Tap ♡
-            </div>
-
-        </div>
+        </p>
 
 
-        <div
-            class="moment"
-            onclick="toggleMoment(this)">
+        <p>
 
-            <div class="moment-number">
-                02 / REALIZATION
-            </div>
+            Dil ne bina kahe hi tumhein apna sa kaha,
 
-            <h3>
-                Kab Mujhe Realize Hua
-            </h3>
-
-            <p class="moment-preview">
-                Jab tumhara khayal aane laga...
-            </p>
-
-            <div class="moment-hidden">
-                Jab bina kisi reason ke tumhara khayal
-                baar baar aane laga, tab samajh aaya
-                ke tum mere liye normal nahi rahi.
-            </div>
-
-            <div class="tap">
-                Tap ♡
-            </div>
-
-        </div>
+        </p>
 
 
-        <div
-            class="moment"
-            onclick="toggleMoment(this)">
+        <p>
 
-            <div class="moment-number">
-                03 / THE THOUGHT
-            </div>
+            Pata nahi ye feeling kab itni gehri ho gayi,
 
-            <h3>
-                Ek Thought Jo Ignore Nahi Hua
-            </h3>
-
-            <p class="moment-preview">
-                Ek sawaal baar baar aata tha...
-            </p>
-
-            <div class="moment-hidden">
-                "Aakhir mujhe Zahreen itni achi
-                kyun lagti hai?"
-
-                Jitna ignore kiya, jawab utna hi
-                clear hota gaya.
-            </div>
-
-            <div class="tap">
-                Tap ♡
-            </div>
-
-        </div>
+        </p>
 
 
-        <div
-            class="moment"
-            onclick="toggleMoment(this)">
+        <p>
 
-            <div class="moment-number">
-                04 / UNSAID
-            </div>
+            Bas itna pata hai...
+            tum mujhe achi lagti ho. ❤️
 
-            <h3>
-                Jo Baat Kehne Se Dar Raha Tha
-            </h3>
-
-            <p class="moment-preview">
-                Shayad ab keh deni chahiye...
-            </p>
-
-            <div class="moment-hidden">
-                Zahreen, tum mujhe genuinely pasand ho.
-                Aur main chahta hoon ke tumhein
-                meri feelings ka pata ho.
-            </div>
-
-            <div class="tap">
-                Tap ♡
-            </div>
-
-        </div>
+        </p>
 
 
     </div>
@@ -1452,101 +1782,155 @@ footer{
 </div>
 
 
-<!-- QUOTE -->
+
+<!-- =====================================================
+     SOFT QUOTE
+===================================================== -->
 
 <div class="glass section">
 
+
     <div class="quote">
+
 
         "Kabhi kabhi kisi insan ko
         pehli nazar mein samajhna zaroori nahi hota...
 
+
         <br><br>
+
 
         Bas dil ka itna keh dena kaafi hota hai ke
 
+
         <br>
 
+
         <span>
+
             'Is insan mein kuch alag hai.'
+
         </span>
+
 
     </div>
 
 </div>
 
 
-<!-- CONFESSION -->
+
+<!-- =====================================================
+     MAIN CONFESSION
+===================================================== -->
 
 <div class="glass section">
 
+
     <div class="section-label">
+
         Ab bilkul honestly...
+
     </div>
 
+
     <h2 class="section-title">
+
         Main Tumse Kya Kehna Chahta Hoon
+
     </h2>
+
 
     <div class="letter">
 
-        <p>
-            Zahreen, main bohat time se soch raha tha
-            ke tumhein ye sab kaise bataun.
-        </p>
 
         <p>
+
+            Zahreen, main bohat time se soch raha tha
+            ke tumhein ye sab kaise bataun.
+
+        </p>
+
+
+        <p>
+
             Simple message bhej deta, lekin mujhe laga
             ke itni important baat ko sirf
             "I like you" keh kar khatam karna kam hai.
+
         </p>
 
+
         <p>
+
             Isliye ye website banayi.
             Shayad thodi crazy hai...
             lekin jo bhi hai, dil se hai.
+
         </p>
 
+
         <p>
+
             Main tumse koi fake promise nahi karna chahta.
             Main bas tumhein aur jaan'na chahta hoon,
             tumhare saath baat karna chahta hoon,
             aur dekhna chahta hoon ke humari story
             kahan tak ja sakti hai.
+
         </p>
 
+
         <p>
+
             Mujhe nahi pata tumhare dil mein
             mere liye kya hai.
             Aur main tumse kisi jawab ki expectation
             bhi nahi rakhna chahta.
+
         </p>
 
+
         <p>
+
             Main bas itna chahta tha ke jo feeling
             mere dil mein hai, woh tumse chhupi na rahe.
+
         </p>
 
+
         <p>
+
             <span class="special">
+
                 Mujhe tum pasand ho...
                 aur main tumhein aur jaan'na chahta hoon.
+
             </span>
+
         </p>
 
+
         <p>
-            Baaki... jo tumhare dil mein ho,
+
+            Baaki...
+            jo tumhare dil mein ho,
             woh mujhe manzoor hoga. ❤️
+
         </p>
+
 
     </div>
 
 </div>
 
 
-<!-- EMOTIONAL PAUSE -->
+
+<!-- =====================================================
+     EMOTIONAL PAUSE
+===================================================== -->
 
 <div class="glass section pause-box">
+
 
     <div
         id="pauseLine"
@@ -1555,6 +1939,7 @@ footer{
         Agar tum yahan tak aa gayi ho...
 
     </div>
+
 
     <div
         id="pauseSmall"
@@ -1565,20 +1950,31 @@ footer{
 
     </div>
 
+
 </div>
 
 
-<!-- PROPOSAL -->
+
+<!-- =====================================================
+     PROPOSAL
+===================================================== -->
 
 <div class="glass section proposal">
 
+
     <div class="mini-label">
+
         The question
+
     </div>
 
+
     <h2>
+
         Zahreen...
+
     </h2>
+
 
     <p class="proposal-text">
 
@@ -1591,16 +1987,20 @@ footer{
         <br>
 
         <strong>
+
             dil se pooch raha hoon.
+
         </strong>
 
     </p>
+
 
     <div class="question">
 
         Kya tum mujhe ek chance dogi? ❤️
 
     </div>
+
 
 
     <button
@@ -1612,6 +2012,7 @@ footer{
     </button>
 
 
+
     <button
         class="btn secondary-btn"
         onclick="takeTime()">
@@ -1619,6 +2020,7 @@ footer{
         Mujhe Thoda Waqt Chahiye 🌸
 
     </button>
+
 
 
     <p class="choice-note">
@@ -1629,9 +2031,13 @@ footer{
     </p>
 
 
-    <!-- SECRET P.S. -->
+
+    <!-- =================================================
+         SECRET P.S.
+    ================================================= -->
 
     <div class="secret">
+
 
         <button onclick="showSecret()">
 
@@ -1658,12 +2064,16 @@ footer{
             <br>
 
             <strong>
+
                 kisi ne tumhein genuinely special samjha hai. ❤️
+
             </strong>
 
         </div>
 
+
     </div>
+
 
 </div>
 
@@ -1671,33 +2081,46 @@ footer{
 </section>
 
 
-<!-- =========================
-     SUCCESS
-========================= -->
+
+<!-- =====================================================
+     YES SCREEN
+===================================================== -->
 
 <section
     id="success"
     class="success hidden">
 
+
     <div class="glass success-card">
 
+
         <div class="success-heart">
+
             💖
+
         </div>
+
 
         <div class="mini-label">
+
             A new beginning
+
         </div>
 
+
         <h1>
+
             You Said Yes.
+
         </h1>
+
 
         <div class="success-subtitle">
 
             So... this is where our story begins. ✨
 
         </div>
+
 
         <p>
 
@@ -1722,8 +2145,10 @@ footer{
             <br>
 
             <strong>
+
                 jis din maine tumhein pehli baar
                 KineTex mein dekha tha.
+
             </strong>
 
             <br><br>
@@ -1761,23 +2186,34 @@ footer{
 
         </div>
 
+
     </div>
+
 
 </section>
 
 
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
 <footer>
+
     Made with feelings, not just code. ♡
+
 </footer>
+
 
 </main>
 
 
+
 <script>
 
-/* =========================
+/* =====================================================
    CINEMATIC INTRO
-========================= */
+===================================================== */
 
 setTimeout(function(){
 
@@ -1788,9 +2224,9 @@ setTimeout(function(){
 },5500);
 
 
-/* =========================
+/* =====================================================
    START STORY
-========================= */
+===================================================== */
 
 function startStory(){
 
@@ -1798,99 +2234,117 @@ function startStory(){
         .getElementById("hero")
         .style.display="none";
 
+
     document
         .getElementById("story")
         .classList.remove("hidden");
 
+
     window.scrollTo({
+
         top:0,
+
         behavior:"smooth"
+
     });
+
 
     setTimeout(function(){
 
         startPauseAnimation();
 
-    },1200);
+    },1000);
 
 }
 
 
-/* =========================
-   MOMENT CARDS
-========================= */
-
-function toggleMoment(card){
-
-    card.classList.toggle("open");
-
-}
-
-
-/* =========================
-   PAUSE ANIMATION
-========================= */
+/* =====================================================
+   EMOTIONAL PAUSE
+===================================================== */
 
 let pauseStarted=false;
 
+
 function startPauseAnimation(){
 
-    if(pauseStarted) return;
+    if(pauseStarted)
+        return;
+
 
     pauseStarted=true;
+
 
     const line=
         document.getElementById("pauseLine");
 
+
     const small=
         document.getElementById("pauseSmall");
 
+
     const observer=
-        new IntersectionObserver(function(entries){
 
-            if(entries[0].isIntersecting){
+        new IntersectionObserver(
 
-                line.classList.add("show");
+            function(entries){
 
-                setTimeout(function(){
+                if(entries[0].isIntersecting){
 
-                    small.classList.add("show");
+                    line.classList.add("show");
 
-                },2000);
 
-                observer.disconnect();
+                    setTimeout(function(){
+
+                        small.classList.add("show");
+
+                    },2000);
+
+
+                    observer.disconnect();
+
+                }
+
+            },
+
+            {
+                threshold:.5
             }
 
-        },{
-            threshold:.5
-        });
+        );
+
 
     observer.observe(
+
         document.querySelector(".pause-box")
+
     );
 
 }
 
 
-/* =========================
-   TAKE TIME
-========================= */
+/* =====================================================
+   TAKE TIME BUTTON
+===================================================== */
 
 function takeTime(){
 
     const button=
         document.querySelector(".secondary-btn");
 
+
     button.innerHTML=
         "Bilkul... Take Your Time 🌷";
 
+
     button.style.transform=
         "scale(1.03)";
+
 
     setTimeout(function(){
 
         button.innerHTML=
             "Mujhe Thoda Waqt Chahiye 🌸";
+
 
         button.style.transform=
             "scale(1)";
@@ -1900,9 +2354,9 @@ function takeTime(){
 }
 
 
-/* =========================
+/* =====================================================
    SECRET P.S.
-========================= */
+===================================================== */
 
 function showSecret(){
 
@@ -1913,9 +2367,9 @@ function showSecret(){
 }
 
 
-/* =========================
-   YES
-========================= */
+/* =====================================================
+   YES BUTTON
+===================================================== */
 
 function sayYes(){
 
@@ -1923,79 +2377,41 @@ function sayYes(){
         .getElementById("story")
         .style.display="none";
 
+
     const success=
         document.getElementById("success");
 
+
     success.classList.remove("hidden");
 
+
     window.scrollTo({
+
         top:0,
+
         behavior:"smooth"
+
     });
+
 
     celebration();
 
 }
 
 
-/* =========================
-   MUSIC
-========================= */
-
-const music=
-    document.getElementById("music");
-
-const musicButton=
-    document.getElementById("musicButton");
-
-let musicPlaying=false;
-
-
-function toggleMusic(){
-
-    if(!musicPlaying){
-
-        music.play()
-        .then(function(){
-
-            musicPlaying=true;
-
-            musicButton.innerHTML=
-                "♫ Music Playing";
-
-        })
-        .catch(function(){
-
-            musicButton.innerHTML=
-                "Add music.mp3 🎵";
-
-        });
-
-    }else{
-
-        music.pause();
-
-        musicPlaying=false;
-
-        musicButton.innerHTML=
-            "♫ Play this moment";
-
-    }
-
-}
-
-
-/* =========================
+/* =====================================================
    FLOATING HEARTS
-========================= */
+===================================================== */
 
 const heartSymbols=[
+
     "♡",
     "♥",
     "💗",
     "💖",
     "✨",
     "🌸"
+
 ];
 
 
@@ -2004,9 +2420,12 @@ function createHeart(){
     const heart=
         document.createElement("div");
 
+
     heart.className="heart";
 
+
     heart.innerHTML=
+
         heartSymbols[
             Math.floor(
                 Math.random()*
@@ -2014,18 +2433,25 @@ function createHeart(){
             )
         ];
 
+
     heart.style.left=
         Math.random()*100+"vw";
 
+
     heart.style.fontSize=
+
         (14+Math.random()*18)+"px";
 
+
     heart.style.animationDuration=
+
         (7+Math.random()*6)+"s";
+
 
     document
         .getElementById("floating-hearts")
         .appendChild(heart);
+
 
     setTimeout(function(){
 
@@ -2035,16 +2461,24 @@ function createHeart(){
 
 }
 
-setInterval(createHeart,900);
+
+setInterval(
+
+    createHeart,
+
+    900
+
+);
 
 
-/* =========================
+/* =====================================================
    YES CELEBRATION
-========================= */
+===================================================== */
 
 function celebration(){
 
     const symbols=[
+
         "❤️",
         "💖",
         "💕",
@@ -2052,14 +2486,22 @@ function celebration(){
         "✨",
         "🌸",
         "🦋"
+
     ];
 
-    for(let i=0;i<65;i++){
+
+    for(
+        let i=0;
+        i<65;
+        i++
+    ){
 
         const item=
             document.createElement("div");
 
+
         item.innerHTML=
+
             symbols[
                 Math.floor(
                     Math.random()*
@@ -2067,46 +2509,75 @@ function celebration(){
                 )
             ];
 
+
         item.style.position="fixed";
+
         item.style.left="50%";
+
         item.style.top="50%";
+
         item.style.zIndex="9999";
+
         item.style.pointerEvents="none";
+
         item.style.fontSize=
+
             (16+Math.random()*24)+"px";
 
-        document.body.appendChild(item);
+
+        document.body
+            .appendChild(item);
+
 
         const x=
+
             (Math.random()-.5)*
             window.innerWidth*1.4;
 
+
         const y=
+
             (Math.random()-.5)*
             window.innerHeight*1.4;
 
+
         item.animate(
+
             [
+
                 {
+
                     transform:
                         "translate(-50%,-50%) scale(0)",
+
                     opacity:1
+
                 },
+
                 {
+
                     transform:
                         `translate(${x}px,${y}px) scale(1.2)`,
+
                     opacity:0
+
                 }
+
             ],
+
             {
+
                 duration:
                     1500+
                     Math.random()*1200,
 
                 easing:
                     "cubic-bezier(.2,.8,.3,1)"
+
             }
+
         );
+
 
         setTimeout(function(){
 
