@@ -4,348 +4,643 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>For Zahreen ❤️</title>
+<title>Ek Baat Kehni Thi — Zahreen ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
 
 <style>
+
+:root{
+    --pink:#e95d96;
+    --pink2:#f58db5;
+    --purple:#9b7bea;
+    --dark:#321d32;
+    --muted:#765c73;
+    --white:rgba(255,255,255,.72);
+}
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-body{
-    min-height:100vh;
-    font-family: "Segoe UI", sans-serif;
-    background:
-        radial-gradient(circle at top left,#ffd6e7,transparent 35%),
-        radial-gradient(circle at bottom right,#d9c7ff,transparent 35%),
-        linear-gradient(135deg,#fff0f6,#f5efff);
-    color:#44213a;
-    overflow-x:hidden;
+html{
+    scroll-behavior:smooth;
 }
 
-/* Floating Hearts */
+body{
+    min-height:100vh;
+    font-family:"DM Sans",sans-serif;
+    color:var(--dark);
+    overflow-x:hidden;
 
-.heart{
+    background:
+        radial-gradient(circle at 10% 10%,rgba(255,177,211,.55),transparent 30%),
+        radial-gradient(circle at 90% 20%,rgba(196,178,255,.5),transparent 30%),
+        radial-gradient(circle at 50% 100%,rgba(255,204,224,.45),transparent 35%),
+        #fff8fc;
+}
+
+body::before{
+    content:"";
     position:fixed;
-    bottom:-30px;
-    font-size:20px;
-    opacity:.65;
-    animation:float 8s linear infinite;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    background:rgba(238,117,171,.12);
+    filter:blur(100px);
+    top:20%;
+    left:-250px;
     pointer-events:none;
 }
 
-@keyframes float{
+body::after{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    background:rgba(145,119,236,.10);
+    filter:blur(100px);
+    bottom:0;
+    right:-250px;
+    pointer-events:none;
+}
+
+/* Floating hearts */
+
+#floating-hearts{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:1;
+}
+
+.heart{
+    position:absolute;
+    bottom:-50px;
+    opacity:0;
+    animation:floatHeart linear forwards;
+}
+
+@keyframes floatHeart{
     0%{
         transform:translateY(0) rotate(0deg);
         opacity:0;
     }
-    15%{opacity:.7;}
+
+    15%{
+        opacity:.5;
+    }
+
     100%{
-        transform:translateY(-110vh) rotate(360deg);
+        transform:translateY(-115vh) rotate(30deg);
         opacity:0;
     }
 }
 
 /* Main */
 
-.container{
-    width:100%;
-    max-width:850px;
+.page{
+    position:relative;
+    z-index:2;
+    width:min(900px,92%);
     margin:auto;
-    padding:25px 18px 60px;
+    padding:35px 0 80px;
 }
 
-.card{
-    background:rgba(255,255,255,.72);
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
-    border:1px solid rgba(255,255,255,.8);
-    box-shadow:0 20px 70px rgba(119,55,105,.15);
-    border-radius:35px;
-    padding:45px 25px;
-    margin-top:25px;
+/* Glass */
+
+.glass{
+    background:var(--white);
+    border:1px solid rgba(255,255,255,.85);
+    backdrop-filter:blur(25px);
+    -webkit-backdrop-filter:blur(25px);
+    border-radius:34px;
+    box-shadow:
+        0 25px 80px rgba(103,55,93,.10),
+        inset 0 1px 0 rgba(255,255,255,.8);
+}
+
+/* HERO */
+
+.hero{
+    min-height:calc(100vh - 70px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
     text-align:center;
 }
 
-.small{
-    color:#b55c8d;
-    font-size:14px;
-    letter-spacing:3px;
-    text-transform:uppercase;
+.hero-card{
+    width:100%;
+    padding:70px 30px;
 }
 
-h1{
-    font-size:clamp(42px,10vw,75px);
-    margin:12px 0;
-    background:linear-gradient(90deg,#e34d8c,#9b63d8);
+.mini-label{
+    font-size:11px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:#ae648a;
+    font-weight:700;
+}
+
+.heart-icon{
+    width:92px;
+    height:92px;
+    margin:0 auto 30px;
+    border-radius:28px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:42px;
+
+    background:
+        linear-gradient(135deg,
+        rgba(255,255,255,.9),
+        rgba(255,224,239,.8));
+
+    box-shadow:
+        0 18px 45px rgba(221,93,148,.18),
+        inset 0 1px 0 white;
+
+    animation:softPulse 2.5s infinite;
+}
+
+@keyframes softPulse{
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.06);
+    }
+}
+
+.hero h1{
+    margin:20px 0 16px;
+
+    font-family:"Playfair Display",serif;
+    font-size:clamp(52px,10vw,90px);
+    font-weight:600;
+    line-height:1;
+
+    background:linear-gradient(
+        120deg,
+        #d94f8b,
+        #a36be2,
+        #e35c9c
+    );
+
     -webkit-background-clip:text;
+    background-clip:text;
     color:transparent;
 }
 
-.subtitle{
-    font-size:18px;
-    line-height:1.7;
-    color:#704d65;
+.hero-description{
+    max-width:570px;
+    margin:0 auto 35px;
+    color:var(--muted);
+    font-size:17px;
+    line-height:1.9;
 }
 
-/* Opening */
+/* Buttons */
 
-#opening{
-    min-height:90vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-.open-heart{
-    width:100px;
-    height:100px;
-    margin:0 auto 25px;
-    border-radius:50%;
-    background:linear-gradient(135deg,#ff72a8,#a86bea);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:45px;
-    box-shadow:0 15px 40px rgba(219,76,145,.35);
-    animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-    0%,100%{transform:scale(1);}
-    50%{transform:scale(1.08);}
-}
-
-button{
-    border:none;
+.btn{
+    position:relative;
+    border:0;
     cursor:pointer;
-    font-size:16px;
+
+    padding:16px 27px;
+    border-radius:17px;
+
+    font-family:inherit;
+    font-size:14px;
     font-weight:700;
-    padding:15px 28px;
-    border-radius:50px;
-    margin:10px 5px;
-    transition:.3s;
+
+    transition:.3s ease;
 }
 
-.start-btn{
+.primary-btn{
     color:white;
-    background:linear-gradient(135deg,#ed5b9a,#9d65db);
-    box-shadow:0 10px 25px rgba(180,70,140,.25);
+
+    background:
+        linear-gradient(135deg,#ed629c,#a06de2);
+
+    box-shadow:
+        0 12px 30px rgba(209,83,145,.25);
 }
 
-button:hover{
-    transform:translateY(-3px) scale(1.03);
+.primary-btn:hover{
+    transform:translateY(-4px);
+    box-shadow:
+        0 18px 35px rgba(209,83,145,.32);
 }
 
-/* Message */
+.secondary-btn{
+    color:#87516f;
+    background:rgba(255,255,255,.7);
+    border:1px solid rgba(221,175,201,.5);
+}
+
+.secondary-btn:hover{
+    transform:translateY(-3px);
+    background:white;
+}
 
 .hidden{
-    display:none;
+    display:none!important;
 }
 
-.message{
-    font-size:19px;
-    line-height:2;
-    margin:30px auto;
-    max-width:680px;
-    color:#57364d;
+/* Sections */
+
+.section{
+    margin-top:28px;
+    padding:50px 30px;
+    text-align:center;
 }
 
-.highlight{
-    color:#d74787;
+.section-label{
+    color:#ad668a;
+    font-size:11px;
+    letter-spacing:3px;
+    text-transform:uppercase;
     font-weight:700;
+}
+
+.section-title{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(32px,6vw,48px);
+    margin:12px 0 28px;
+    color:#45263f;
+}
+
+/* Letter */
+
+.letter{
+    max-width:680px;
+    margin:auto;
+    text-align:left;
+}
+
+.letter p{
+    font-size:17px;
+    line-height:2;
+    color:#644b60;
+    margin-bottom:20px;
+}
+
+.letter .special{
+    color:#d34f88;
+    font-family:"Playfair Display",serif;
+    font-size:25px;
+    font-style:italic;
 }
 
 /* Feelings */
 
 .feelings{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    grid-template-columns:repeat(3,1fr);
     gap:15px;
-    margin:30px 0;
 }
 
 .feeling{
-    background:rgba(255,255,255,.75);
-    border-radius:22px;
-    padding:25px 15px;
-    box-shadow:0 8px 25px rgba(100,50,100,.08);
+    padding:28px 18px;
+    border-radius:25px;
+
+    background:rgba(255,255,255,.55);
+    border:1px solid rgba(255,255,255,.8);
+
+    transition:.3s;
 }
 
-.feeling .emoji{
-    font-size:35px;
+.feeling:hover{
+    transform:translateY(-6px);
+    background:rgba(255,255,255,.85);
+    box-shadow:0 15px 35px rgba(111,60,100,.08);
+}
+
+.feeling-icon{
+    font-size:31px;
+    margin-bottom:12px;
 }
 
 .feeling h3{
-    margin:10px 0 5px;
-    color:#a74378;
+    font-size:16px;
+    margin-bottom:8px;
+    color:#8f4c72;
+}
+
+.feeling p{
+    color:#806b7a;
+    font-size:13px;
+    line-height:1.7;
+}
+
+/* Quote */
+
+.quote{
+    max-width:650px;
+    margin:auto;
+    font-family:"Playfair Display",serif;
+    font-size:clamp(24px,5vw,36px);
+    line-height:1.5;
+    font-style:italic;
+    color:#68405d;
+}
+
+.quote span{
+    color:#d94f8b;
 }
 
 /* Proposal */
 
 .proposal{
-    margin-top:40px;
-    padding:40px 20px;
-    border-radius:30px;
-    background:linear-gradient(
-        135deg,
-        rgba(255,220,235,.7),
-        rgba(229,214,255,.7)
-    );
+    padding:60px 25px;
+    text-align:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,221,235,.75),
+            rgba(231,220,255,.72)
+        );
 }
 
 .proposal h2{
-    font-size:clamp(28px,6vw,45px);
-    color:#8e3d70;
-    margin-bottom:15px;
+    font-family:"Playfair Display",serif;
+    font-size:clamp(37px,7vw,58px);
+    margin:12px 0;
+    color:#4b2944;
+}
+
+.proposal-text{
+    max-width:570px;
+    margin:0 auto 30px;
+    color:#6d5367;
+    line-height:1.9;
+    font-size:16px;
 }
 
 .question{
-    font-size:20px;
-    line-height:1.7;
-}
-
-.yes{
-    color:white;
-    background:linear-gradient(135deg,#ef4f91,#c44fd1);
-    padding:16px 35px;
-    font-size:18px;
-}
-
-.maybe{
-    color:#7a4262;
-    background:white;
+    font-family:"Playfair Display",serif;
+    font-size:27px;
+    color:#d14d87;
+    margin-bottom:25px;
 }
 
 /* Success */
 
-#success{
+.success{
+    min-height:90vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     text-align:center;
-    animation:appear 1s ease;
 }
 
-@keyframes appear{
-    from{
-        opacity:0;
-        transform:translateY(20px);
+.success-card{
+    padding:70px 30px;
+    width:100%;
+}
+
+.success-heart{
+    font-size:85px;
+    animation:successPulse 1.5s infinite;
+}
+
+@keyframes successPulse{
+    0%,100%{
+        transform:scale(1);
     }
-    to{
-        opacity:1;
-        transform:translateY(0);
+    50%{
+        transform:scale(1.15);
     }
 }
 
-.big-heart{
-    font-size:90px;
-    animation:pulse 1.3s infinite;
-}
-
-.success-title{
-    font-size:clamp(35px,8vw,65px);
-    color:#d74386;
+.success h1{
+    font-family:"Playfair Display",serif;
+    font-size:clamp(42px,8vw,70px);
     margin:15px 0;
+    color:#d64e8b;
+}
+
+.success p{
+    max-width:620px;
+    margin:auto;
+    color:#6c5366;
+    line-height:2;
+    font-size:17px;
 }
 
 .signature{
     margin-top:35px;
-    font-size:18px;
-    color:#754963;
+    color:#8d627c;
 }
 
-.name{
-    color:#d33f83;
-    font-weight:800;
+.signature strong{
+    display:block;
+    margin-top:7px;
+    color:#d14d87;
+    font-family:"Playfair Display",serif;
+    font-size:24px;
+}
+
+/* Footer */
+
+footer{
+    text-align:center;
+    margin-top:30px;
+    color:#a47d96;
+    font-size:12px;
 }
 
 /* Responsive */
 
-@media(max-width:600px){
-    .card{
-        padding:35px 18px;
-        border-radius:28px;
+@media(max-width:700px){
+
+    .page{
+        width:94%;
     }
 
-    .message{
-        font-size:17px;
-        line-height:1.9;
+    .hero-card{
+        padding:55px 20px;
+    }
+
+    .section{
+        padding:40px 20px;
     }
 
     .feelings{
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:1fr;
+    }
+
+    .letter p{
+        font-size:16px;
+    }
+
+    .btn{
+        width:100%;
+        max-width:280px;
+        margin:5px auto;
     }
 }
+
 </style>
 </head>
 
+
 <body>
 
-<div id="hearts"></div>
+<div id="floating-hearts"></div>
 
-<div class="container">
 
-    <!-- OPENING -->
+<main class="page">
 
-    <section id="opening">
-        <div class="card">
+    <!-- HERO -->
 
-            <div class="open-heart">💗</div>
+    <section id="hero" class="hero">
 
-            <div class="small">
-                A little something for
+        <div class="glass hero-card">
+
+            <div class="heart-icon">
+                💗
+            </div>
+
+            <div class="mini-label">
+                Ek choti si baat...
             </div>
 
             <h1>Zahreen</h1>
 
-            <p class="subtitle">
-                This isn't just a website...<br>
-                it's something I made because<br>
-                some feelings are too special for a simple message.
+            <p class="hero-description">
+
+                Shayad tumhein andaza bhi nahi
+                ke tum mere liye kab itni special ban gayi...
+
+                <br>
+
+                Isliye jo baat dil mein hai,
+                aaj woh tumhare saamne rakhna chahta hoon. ❤️
+
             </p>
 
-            <button class="start-btn" onclick="openMessage()">
-                Open My Heart 💌
+            <button class="btn primary-btn" onclick="startStory()">
+                Meri Baat Sunogi? 💌
             </button>
 
         </div>
+
     </section>
 
 
-    <!-- MAIN MESSAGE -->
+    <!-- STORY -->
 
-    <section id="main" class="hidden">
+    <section id="story" class="hidden">
 
-        <div class="card">
 
-            <div class="small">
-                Dear Zahreen
+        <!-- FIRST MEMORY -->
+
+        <div class="glass section">
+
+            <div class="section-label">
+                Shayad yahin se...
             </div>
 
-            <h1>There's Something...</h1>
+            <h2 class="section-title">
+                Jab Maine Tumhein Pehli Baar Dekha
+            </h2>
 
-            <div class="message">
+            <div class="letter">
 
                 <p>
-                    I don't know exactly when it happened,
-                    but somewhere between the little conversations,
-                    the smiles and the moments I noticed you...
-                    <span class="highlight">you became special to me.</span>
+                    Zahreen, mujhe aaj bhi yaad hai jab maine
+                    tumhein pehli baar <strong>KineTex</strong> mein dekha tha.
                 </p>
 
-                <br>
-
                 <p>
-                    I've thought about saying this many times.
-                    But every time I tried to put my feelings
-                    into simple words, they never felt enough.
+                    Pata nahi kyun...
+                    lekin us moment mein mujhe kuch alag sa mehsoos hua.
                 </p>
 
-                <br>
+                <p>
+                    Main tumhein pehli baar dekh raha tha,
+                    phir bhi pata nahi kyun meri nazar
+                    ek pal ke liye tum par ruk gayi.
+                </p>
 
                 <p>
-                    So instead of sending you an ordinary message,
-                    I decided to create something that could say
-                    what my heart has been trying to say.
+                    Shayad woh sirf ek normal moment tha...
+                    lekin mere liye woh moment
+                    normal nahi raha.
+                </p>
+
+                <p>
+                    Us waqt mujhe bilkul idea nahi tha
+                    ke jis larki ko main bas pehli baar dekh raha hoon,
+                    woh dheere dheere mere thoughts ka
+                    itna beautiful hissa ban jayegi.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- HOW IT GREW -->
+
+        <div class="glass section">
+
+            <div class="section-label">
+                Phir dheere dheere...
+            </div>
+
+            <h2 class="section-title">
+                Ek Feeling Jo Barhti Gayi
+            </h2>
+
+            <div class="letter">
+
+                <p>
+                    Pehli baar tumhein dekhne ke baad
+                    shayad mujhe khud bhi samajh nahi aaya
+                    ke mujhe kya feel ho raha tha.
+                </p>
+
+                <p>
+                    Lekin phir tumhare baare mein
+                    choti choti cheezein notice hone lagin.
+                </p>
+
+                <p>
+                    Tumhari smile...
+                    tumhara baat karne ka andaaz...
+                    tumhari presence...
+                </p>
+
+                <p>
+                    Aur sabse ajeeb baat ye thi ke
+                    ye sab cheezein mujhe achi lagne lagin.
+                </p>
+
+                <p>
+                    Kabhi kabhi bina kisi reason ke
+                    tumhara khayal aa jata tha.
+                </p>
+
+                <p>
+                    Aur phir main khud se poochta tha...
+                    <span class="special">
+                        "Aakhir mujhe is larki ki itni fikar kyun hone lagi hai?"
+                    </span>
                 </p>
 
             </div>
@@ -355,52 +650,65 @@ button:hover{
 
         <!-- FEELINGS -->
 
-        <div class="card">
+        <div class="glass section">
 
-            <div class="small">
-                What you mean to me
+            <div class="section-label">
+                Jo main feel karta hoon
             </div>
 
-            <h2 style="font-size:35px;margin:15px;">
-                Maybe It's These Little Things 🌸
+            <h2 class="section-title">
+                Tum Mere Liye Kya Ho?
             </h2>
 
             <div class="feelings">
 
                 <div class="feeling">
-                    <div class="emoji">🌷</div>
-                    <h3>Your Smile</h3>
+
+                    <div class="feeling-icon">
+                        🌷
+                    </div>
+
+                    <h3>Ek Khubsurat Ehsaas</h3>
+
                     <p>
-                        Somehow it makes ordinary moments
-                        feel a little better.
+                        Tumhari presence mein kuch aisa hai
+                        jo mere normal moments ko bhi
+                        special bana deta hai.
                     </p>
+
                 </div>
 
-                <div class="feeling">
-                    <div class="emoji">✨</div>
-                    <h3>Your Presence</h3>
-                    <p>
-                        Even a small conversation with you
-                        can stay in my mind for hours.
-                    </p>
-                </div>
 
                 <div class="feeling">
-                    <div class="emoji">🦋</div>
-                    <h3>The Feeling</h3>
+
+                    <div class="feeling-icon">
+                        ✨
+                    </div>
+
+                    <h3>Ek Sukoon</h3>
+
                     <p>
-                        I can't perfectly explain it...
-                        I just know it's real.
+                        Tumse baat ho jaye to dil halka sa
+                        aur din thoda zyada acha lagta hai.
                     </p>
+
                 </div>
 
+
                 <div class="feeling">
-                    <div class="emoji">💖</div>
-                    <h3>You</h3>
+
+                    <div class="feeling-icon">
+                        🦋
+                    </div>
+
+                    <h3>Ek Special Feeling</h3>
+
                     <p>
-                        Simply you.
-                        That's probably the best explanation.
+                        Ye feeling main har kisi ke liye
+                        feel nahi karta.
+                        Tum mere liye different ho.
                     </p>
+
                 </div>
 
             </div>
@@ -408,74 +716,143 @@ button:hover{
         </div>
 
 
-        <!-- EMOTIONAL MESSAGE -->
+        <!-- QUOTE -->
 
-        <div class="card">
+        <div class="glass section">
 
-            <div class="message">
+            <div class="quote">
+
+                "Kabhi kabhi kisi insan ko
+                pehli nazar mein samajhna zaroori nahi hota...
+
+                <br><br>
+
+                Bas dil ka itna keh dena kaafi hota hai ke
+                <span>
+                    'is insan mein kuch alag hai.'
+                </span>"
+
+            </div>
+
+        </div>
+
+
+        <!-- DEEP MESSAGE -->
+
+        <div class="glass section">
+
+            <div class="section-label">
+                Dil ki asli baat
+            </div>
+
+            <h2 class="section-title">
+                Main Tumse Kya Kehna Chahta Hoon
+            </h2>
+
+            <div class="letter">
 
                 <p>
                     Zahreen...
+                    main bohat der se soch raha tha
+                    ke ye sab tumhein kaise bataun.
                 </p>
 
-                <br>
-
                 <p>
-                    I don't want to make a huge promise
-                    or pretend that I know what the future holds.
+                    Main nahi chahta tha ke bas ek normal message bhej kar
+                    keh doon ke "I like you".
                 </p>
 
-                <br>
-
                 <p>
-                    I just know that whenever I think about
-                    someone I'd genuinely like to know better,
-                    laugh with, support and create beautiful
-                    memories with...
+                    Kyunki mere liye ye sirf
+                    ek simple crush wali baat nahi hai.
                 </p>
 
-                <br>
+                <p>
+                    Tumhare liye jo feeling mere andar bani hai,
+                    woh waqt ke saath aur genuine hoti gayi.
+                </p>
 
                 <p>
-                    <span class="highlight">
-                        I think of you. ❤️
+                    Main tumhare saath koi fake promise nahi karna chahta.
+                    Na main ye kehna chahta hoon ke sab kuch perfect hoga.
+                </p>
+
+                <p>
+                    Main bas itna chahta hoon ke agar tum comfortable ho,
+                    to mujhe tumhein aur achi tarah jaanne ka
+                    ek chance do.
+                </p>
+
+                <p>
+                    Tumhari khushi, tumhari respect aur tumhari choice
+                    mere liye important hai.
+                </p>
+
+                <p>
+                    Aur agar tumhare dil mein mere liye
+                    thodi si bhi woh feeling hai...
+                    to shayad hum dono
+                    ek khoobsurat beginning kar sakte hain.
+                </p>
+
+                <p>
+                    Kyunki kabhi kabhi
+                    <span class="special">
+                        ek choti si mulaqat,
+                        ek choti si feeling,
+                        aur ek honest confession
+                        kisi beautiful story ki beginning ban jata hai.
                     </span>
                 </p>
 
             </div>
 
+        </div>
 
-            <!-- PROPOSAL -->
 
-            <div class="proposal">
+        <!-- FINAL -->
 
-                <h2>So, Zahreen...</h2>
+        <div class="glass section proposal">
 
-                <p class="question">
-
-                    Would you give me a chance
-                    to turn these feelings into
-                    something beautiful?
-
-                    <br><br>
-
-                    <strong>
-                        Will you be mine? 💗
-                    </strong>
-
-                </p>
-
-                <br>
-
-                <button class="yes" onclick="sayYes()">
-                    YES, I WILL ❤️
-                </button>
-
-                <button class="maybe" onclick="maybe()">
-                    I need a little time 🌸
-                </button>
-
+            <div class="mini-label">
+                Ab bas ek sawaal...
             </div>
+
+            <h2>
+                Zahreen...
+            </h2>
+
+            <p class="proposal-text">
+
+                Jab maine tumhein pehli baar KineTex mein dekha tha,
+                mujhe nahi pata tha ke woh chota sa moment
+                mere liye itna meaningful ban jayega.
+
+                <br><br>
+
+                Aaj main wahi feeling tumhare saamne
+                honestly rakh raha hoon.
+
+                <br><br>
+
+                Main tumhein pasand karta hoon.
+                Aur main chahta hoon ke agar tum bhi chahti ho,
+                to hum ek doosre ko aur jaanne ka
+                ek beautiful chance dein.
+
+            </p>
+
+            <div class="question">
+                Kya tum mujhe ek chance dogi? ❤️
+            </div>
+
+            <button class="btn primary-btn" onclick="sayYes()">
+                Haan... ❤️
+            </button>
+
+            <button class="btn secondary-btn" onclick="takeTime()">
+                Mujhe Thoda Waqt Chahiye 🌸
+            </button>
 
         </div>
 
@@ -484,50 +861,61 @@ button:hover{
 
     <!-- SUCCESS -->
 
-    <section id="success" class="hidden">
+    <section id="success" class="success hidden">
 
-        <div class="card">
+        <div class="glass success-card">
 
-            <div class="big-heart">
+            <div class="success-heart">
                 💖
             </div>
 
-            <div class="small">
-                My favorite answer
+            <div class="mini-label">
+                Ye moment yaad rahega
             </div>
 
-            <div class="success-title">
-                You Said Yes! 🥹
-            </div>
+            <h1>
+                Thank You, Zahreen.
+            </h1>
 
-            <p class="message">
+            <p>
 
-                Zahreen, you have no idea how happy
-                you just made me.
+                Sach kahun...
+                tumhare is ek jawab ne
+                mere dil ko woh khushi di hai
+                jo shayad words mein explain nahi kar sakta. 🥹
 
                 <br><br>
 
-                I don't promise a perfect story.
+                Mujhe nahi pata ke aage hamari story
+                kahan tak jayegi,
+                lekin main is beginning ko
+                hamesha special samjhunga.
+
+                <br><br>
+
+                Kyunki ye sab us ek moment se shuru hua tha...
 
                 <br>
 
-                But I promise that if you let me,
-                I'll make every moment worth remembering.
+                <strong>
+                    Jab maine tumhein pehli baar KineTex mein dekha tha. ❤️
+                </strong>
 
                 <br><br>
 
-                Maybe this is just the beginning
-                of something beautiful. 🌷
+                Aur shayad...
+                woh meri zindagi ke un moments mein se ek tha
+                jise main kabhi bhoolna nahi chahta.
 
             </p>
 
             <div class="signature">
 
-                Made with a lot of feelings by<br>
+                With genuine feelings,
 
-                <span class="name">
+                <strong>
                     Talib Ali ❤️
-                </span>
+                </strong>
 
             </div>
 
@@ -535,18 +923,25 @@ button:hover{
 
     </section>
 
-</div>
+
+    <footer>
+        Made with feelings, not just code. ♡
+    </footer>
+
+</main>
 
 
 <script>
 
-/* Open Message */
+/* Start */
 
-function openMessage(){
+function startStory(){
 
-    document.getElementById("opening").style.display="none";
+    document.getElementById("hero").style.display="none";
 
-    document.getElementById("main").classList.remove("hidden");
+    const story=document.getElementById("story");
+
+    story.classList.remove("hidden");
 
     window.scrollTo({
         top:0,
@@ -556,37 +951,55 @@ function openMessage(){
 }
 
 
-/* YES */
+/* Yes */
 
 function sayYes(){
 
-    document.getElementById("main").style.display="none";
+    document.getElementById("story").style.display="none";
 
-    document.getElementById("success").classList.remove("hidden");
+    const success=document.getElementById("success");
 
-    createExplosion();
+    success.classList.remove("hidden");
 
     window.scrollTo({
         top:0,
         behavior:"smooth"
     });
 
+    celebration();
+
 }
 
 
-/* Maybe */
+/* Take time */
 
-function maybe(){
+function takeTime(){
 
-    alert(
-        "That's completely okay, Zahreen 🌸\n\n" +
-        "Take your time. Your feelings matter. ❤️"
-    );
+    const button=document.querySelector(".secondary-btn");
+
+    button.innerHTML="Bilkul, Take Your Time 🌷";
+
+    button.style.transform="scale(1.02)";
+
+    setTimeout(()=>{
+
+        button.innerHTML="Mujhe Thoda Waqt Chahiye 🌸";
+
+    },2500);
 
 }
 
 
 /* Floating Hearts */
+
+const heartSymbols=[
+    "♡",
+    "♥",
+    "💗",
+    "💖",
+    "✨",
+    "🌸"
+];
 
 function createHeart(){
 
@@ -594,77 +1007,104 @@ function createHeart(){
 
     heart.className="heart";
 
-    const hearts=["❤️","💗","💖","💕","🌸","✨","🦋"];
-
     heart.innerHTML=
-        hearts[Math.floor(Math.random()*hearts.length)];
+        heartSymbols[
+            Math.floor(Math.random()*heartSymbols.length)
+        ];
 
-    heart.style.left=Math.random()*100+"vw";
+    heart.style.left=
+        Math.random()*100+"vw";
 
     heart.style.fontSize=
-        (15+Math.random()*20)+"px";
+        (14+Math.random()*18)+"px";
 
     heart.style.animationDuration=
-        (5+Math.random()*5)+"s";
+        (7+Math.random()*6)+"s";
 
-    document.body.appendChild(heart);
+    document
+        .getElementById("floating-hearts")
+        .appendChild(heart);
 
     setTimeout(()=>{
         heart.remove();
-    },10000);
+    },13000);
+
 }
 
-setInterval(createHeart,700);
+setInterval(createHeart,900);
 
 
-/* YES Celebration */
+/* Celebration */
 
-function createExplosion(){
+function celebration(){
 
-    const emojis=["❤️","💖","💕","💗","✨","🌸","🥹"];
+    const symbols=[
+        "❤️",
+        "💖",
+        "💕",
+        "💗",
+        "✨",
+        "🌸",
+        "🦋"
+    ];
 
-    for(let i=0;i<60;i++){
+    for(let i=0;i<70;i++){
 
         const item=document.createElement("div");
 
         item.innerHTML=
-            emojis[Math.floor(Math.random()*emojis.length)];
+            symbols[
+                Math.floor(Math.random()*symbols.length)
+            ];
 
         item.style.position="fixed";
         item.style.left="50%";
         item.style.top="50%";
-        item.style.fontSize=
-            (18+Math.random()*25)+"px";
-
         item.style.zIndex="9999";
         item.style.pointerEvents="none";
+        item.style.fontSize=
+            (16+Math.random()*25)+"px";
 
         document.body.appendChild(item);
 
-        const x=(Math.random()-0.5)*window.innerWidth*1.5;
-        const y=(Math.random()-0.5)*window.innerHeight*1.5;
+        const x=
+            (Math.random()-.5)*
+            window.innerWidth*1.5;
+
+        const y=
+            (Math.random()-.5)*
+            window.innerHeight*1.5;
 
         item.animate(
+
             [
                 {
-                    transform:"translate(-50%,-50%) scale(0)",
+                    transform:
+                        "translate(-50%,-50%) scale(0)",
                     opacity:1
                 },
+
                 {
                     transform:
-                    `translate(${x}px,${y}px) scale(1.5)`,
+                        `translate(${x}px,${y}px) scale(1.3)`,
                     opacity:0
                 }
             ],
+
             {
-                duration:1800+Math.random()*1000,
-                easing:"cubic-bezier(.2,.8,.3,1)"
+                duration:
+                    1600+Math.random()*1200,
+
+                easing:
+                    "cubic-bezier(.2,.8,.3,1)"
             }
+
         );
 
         setTimeout(()=>{
             item.remove();
         },3000);
+
     }
 
 }
@@ -672,4 +1112,4 @@ function createExplosion(){
 </script>
 
 </body>
-  </html>
+</html>
