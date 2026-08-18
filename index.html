@@ -11,14 +11,12 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 
 <style>
-
 :root{
     --pink:#e95d96;
-    --pink-light:#f58db5;
+    --pink2:#f58db5;
     --purple:#9b7bea;
     --dark:#321d32;
     --muted:#765c73;
-    --glass:rgba(255,255,255,.72);
 }
 
 *{
@@ -44,45 +42,9 @@ body{
         #fff8fc;
 }
 
-/* =====================================================
-   FLOATING HEARTS
-===================================================== */
-
-#floating-hearts{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    overflow:hidden;
-    z-index:5;
-}
-
-.heart{
-    position:absolute;
-    bottom:-50px;
-    opacity:0;
-    animation:floatHeart linear forwards;
-}
-
-@keyframes floatHeart{
-
-    0%{
-        transform:translateY(0) rotate(0deg);
-        opacity:0;
-    }
-
-    15%{
-        opacity:.45;
-    }
-
-    100%{
-        transform:translateY(-115vh) rotate(35deg);
-        opacity:0;
-    }
-}
-
-/* =====================================================
+/* =========================
    CINEMATIC INTRO
-===================================================== */
+========================= */
 
 #cinematic{
     position:fixed;
@@ -92,18 +54,18 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
-
     text-align:center;
 
     background:
-        radial-gradient(circle at 50% 45%,
-        rgba(225,83,143,.18),
-        transparent 32%),
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(225,83,143,.18),
+            transparent 32%
+        ),
         #160f18;
 
-    transition:
-        opacity 1.2s ease,
-        visibility 1.2s ease;
+    transition:opacity 1.2s ease,
+               visibility 1.2s ease;
 }
 
 #cinematic.hide{
@@ -120,20 +82,18 @@ body{
 .cinematic-line{
     color:#f2c9dc;
     font-size:clamp(16px,3vw,21px);
-    letter-spacing:1px;
     line-height:1.8;
 
     opacity:0;
 
-    animation:
-        cinematicFade 2s ease forwards;
+    animation:fadeIn 1.8s ease forwards;
 }
 
 .cinematic-name{
-    margin-top:24px;
+    margin-top:22px;
 
     font-family:"Playfair Display",serif;
-    font-size:clamp(58px,13vw,105px);
+    font-size:clamp(60px,13vw,105px);
 
     background:
         linear-gradient(
@@ -148,46 +108,75 @@ body{
     color:transparent;
 
     opacity:0;
-    transform:translateY(20px);
+    transform:translateY(25px);
 
-    animation:
-        nameReveal 2s ease 1.7s forwards;
+    animation:nameIn 1.8s ease 1.6s forwards;
 }
 
 .cinematic-small{
-    margin-top:22px;
+    margin-top:20px;
 
     color:#aa91a4;
-    font-size:11px;
+    font-size:10px;
     letter-spacing:4px;
     text-transform:uppercase;
 
     opacity:0;
 
-    animation:
-        cinematicFade 2s ease 3.5s forwards;
+    animation:fadeIn 1.8s ease 3.3s forwards;
 }
 
-@keyframes cinematicFade{
-
+@keyframes fadeIn{
     to{
         opacity:1;
     }
-
 }
 
-@keyframes nameReveal{
-
+@keyframes nameIn{
     to{
         opacity:1;
         transform:translateY(0);
     }
-
 }
 
-/* =====================================================
-   MAIN
-===================================================== */
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+#floating-hearts{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:5;
+}
+
+.heart{
+    position:absolute;
+    bottom:-50px;
+    opacity:0;
+    animation:floatHeart linear forwards;
+}
+
+@keyframes floatHeart{
+    0%{
+        transform:translateY(0) rotate(0);
+        opacity:0;
+    }
+
+    15%{
+        opacity:.45;
+    }
+
+    100%{
+        transform:translateY(-115vh) rotate(35deg);
+        opacity:0;
+    }
+}
+
+/* =========================
+   PAGE
+========================= */
 
 .page{
     position:relative;
@@ -199,10 +188,8 @@ body{
     padding:35px 0 80px;
 }
 
-/* GLASS */
-
 .glass{
-    background:var(--glass);
+    background:rgba(255,255,255,.72);
 
     border:1px solid rgba(255,255,255,.85);
 
@@ -216,9 +203,9 @@ body{
         inset 0 1px 0 rgba(255,255,255,.8);
 }
 
-/* =====================================================
+/* =========================
    HERO
-===================================================== */
+========================= */
 
 .hero{
     min-height:calc(100vh - 70px);
@@ -235,19 +222,11 @@ body{
     padding:70px 30px;
 }
 
-.mini-label{
-    font-size:11px;
-    letter-spacing:4px;
-    text-transform:uppercase;
-    color:#ae648a;
-    font-weight:700;
-}
-
 .heart-icon{
     width:92px;
     height:92px;
 
-    margin:0 auto 30px;
+    margin:0 auto 28px;
 
     border-radius:28px;
 
@@ -265,14 +244,12 @@ body{
         );
 
     box-shadow:
-        0 18px 45px rgba(221,93,148,.18),
-        inset 0 1px 0 white;
+        0 18px 45px rgba(221,93,148,.18);
 
-    animation:softPulse 2.5s infinite;
+    animation:pulse 2.5s infinite;
 }
 
-@keyframes softPulse{
-
+@keyframes pulse{
     0%,100%{
         transform:scale(1);
     }
@@ -280,17 +257,21 @@ body{
     50%{
         transform:scale(1.06);
     }
+}
 
+.mini-label{
+    font-size:10px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:#ae648a;
+    font-weight:700;
 }
 
 .hero h1{
     margin:20px 0 16px;
 
     font-family:"Playfair Display",serif;
-
-    font-size:clamp(52px,10vw,90px);
-
-    font-weight:600;
+    font-size:clamp(55px,10vw,90px);
 
     line-height:1;
 
@@ -304,31 +285,26 @@ body{
 
     -webkit-background-clip:text;
     background-clip:text;
-
     color:transparent;
 }
 
 .hero-description{
-    max-width:570px;
+    max-width:560px;
 
-    margin:0 auto 35px;
+    margin:0 auto 32px;
 
     color:var(--muted);
 
-    font-size:17px;
-
+    font-size:16px;
     line-height:1.9;
 }
 
-/* =====================================================
+/* =========================
    BUTTONS
-===================================================== */
+========================= */
 
 .btn{
-    position:relative;
-
     border:0;
-
     cursor:pointer;
 
     padding:16px 27px;
@@ -336,16 +312,13 @@ body{
     border-radius:17px;
 
     font-family:inherit;
-
     font-size:14px;
-
     font-weight:700;
 
     transition:.3s ease;
 }
 
 .primary-btn{
-
     color:white;
 
     background:
@@ -360,7 +333,6 @@ body{
 }
 
 .primary-btn:hover{
-
     transform:translateY(-4px);
 
     box-shadow:
@@ -368,33 +340,31 @@ body{
 }
 
 .secondary-btn{
-
     color:#87516f;
 
-    background:rgba(255,255,255,.7);
+    background:rgba(255,255,255,.75);
 
     border:1px solid rgba(221,175,201,.5);
 }
 
 .secondary-btn:hover{
-
     transform:translateY(-3px);
-
     background:white;
 }
 
-/* MUSIC */
+/* =========================
+   MUSIC
+========================= */
 
 .music-btn{
-
     position:fixed;
 
-    right:22px;
-    bottom:22px;
+    right:20px;
+    bottom:20px;
 
     z-index:100;
 
-    border:1px solid rgba(255,255,255,.8);
+    border:1px solid rgba(255,255,255,.85);
 
     background:rgba(255,255,255,.72);
 
@@ -409,99 +379,73 @@ body{
     cursor:pointer;
 
     font-weight:700;
-
     font-size:12px;
 
-    box-shadow:0 10px 30px rgba(100,50,100,.12);
+    box-shadow:
+        0 10px 30px rgba(100,50,100,.12);
 
     transition:.3s;
 }
 
 .music-btn:hover{
-
     transform:translateY(-3px);
-
 }
 
-/* =====================================================
-   HIDDEN
-===================================================== */
+/* =========================
+   SECTIONS
+========================= */
 
 .hidden{
     display:none!important;
 }
 
-/* =====================================================
-   SECTIONS
-===================================================== */
-
 .section{
-
     margin-top:28px;
-
     padding:50px 30px;
-
     text-align:center;
 }
 
 .section-label{
-
     color:#ad668a;
-
-    font-size:11px;
-
+    font-size:10px;
     letter-spacing:3px;
-
     text-transform:uppercase;
-
     font-weight:700;
 }
 
 .section-title{
-
     font-family:"Playfair Display",serif;
-
     font-size:clamp(32px,6vw,48px);
-
     margin:12px 0 28px;
-
     color:#45263f;
 }
 
-/* =====================================================
-   KINETEX CENTERPIECE
-===================================================== */
+/* =========================
+   KINETEX
+========================= */
 
-.kinetex-card{
-
-    position:relative;
-
-    overflow:hidden;
-
+.kinetex{
     padding:0;
-
-    text-align:left;
+    overflow:hidden;
 }
 
-.kinetex-top{
+.kinetex-head{
+    padding:55px 30px 40px;
 
-    padding:55px 35px 40px;
+    text-align:center;
 
     background:
         linear-gradient(
             135deg,
-            rgba(255,221,235,.8),
+            rgba(255,221,235,.82),
             rgba(230,220,255,.78)
         );
-
-    text-align:center;
 }
 
-.kinetex-date{
-
+.kinetex-badge{
     display:inline-block;
 
-    padding:8px 14px;
+    padding:8px 15px;
 
     border-radius:50px;
 
@@ -509,15 +453,12 @@ body{
 
     color:#a75b82;
 
-    font-size:11px;
-
+    font-size:10px;
     letter-spacing:2px;
-
     text-transform:uppercase;
 }
 
 .kinetex-title{
-
     margin-top:18px;
 
     font-family:"Playfair Display",serif;
@@ -527,80 +468,59 @@ body{
     color:#4a2943;
 }
 
-.kinetex-subtitle{
+.kinetex-text{
+    max-width:560px;
 
     margin:15px auto 0;
 
-    max-width:540px;
-
     color:#72596c;
 
-    line-height:1.8;
-
     font-size:15px;
+    line-height:1.8;
 }
 
 .timeline{
-
-    position:relative;
-
-    padding:40px 35px 50px;
+    padding:35px;
 }
 
-.timeline::before{
+.timeline-item{
+    position:relative;
 
+    display:grid;
+    grid-template-columns:30px 1fr;
+
+    gap:18px;
+
+    padding-bottom:30px;
+}
+
+.timeline-item:last-child{
+    padding-bottom:0;
+}
+
+.timeline-item::after{
     content:"";
 
     position:absolute;
 
-    left:50%;
-
-    top:35px;
-
-    bottom:35px;
+    left:14px;
+    top:30px;
+    bottom:0;
 
     width:1px;
 
-    background:
-        linear-gradient(
-            to bottom,
-            transparent,
-            #e6a5c3,
-            transparent
-        );
+    background:#e6b0c8;
 }
 
-.timeline-item{
-
-    position:relative;
-
-    width:50%;
-
-    padding:15px 35px;
-
+.timeline-item:last-child::after{
+    display:none;
 }
 
-.timeline-item.left{
+.dot{
+    width:12px;
+    height:12px;
 
-    text-align:right;
-}
-
-.timeline-item.right{
-
-    margin-left:50%;
-
-    text-align:left;
-}
-
-.timeline-dot{
-
-    position:absolute;
-
-    top:23px;
-
-    width:13px;
-
-    height:13px;
+    margin-top:6px;
 
     border-radius:50%;
 
@@ -608,85 +528,65 @@ body{
 
     box-shadow:
         0 0 0 7px rgba(228,107,157,.12);
+
+    z-index:2;
 }
 
-.left .timeline-dot{
-
-    right:-7px;
-}
-
-.right .timeline-dot{
-
-    left:-7px;
-}
-
-.timeline-item h3{
-
+.timeline-content h3{
     font-family:"Playfair Display",serif;
 
     color:#8e4e71;
 
-    font-size:21px;
+    font-size:20px;
 
-    margin-bottom:8px;
+    margin-bottom:7px;
 }
 
-.timeline-item p{
-
+.timeline-content p{
     color:#765d70;
 
-    line-height:1.8;
-
     font-size:14px;
+
+    line-height:1.8;
 }
 
-/* =====================================================
+/* =========================
    LETTER
-===================================================== */
+========================= */
 
 .letter{
-
-    max-width:680px;
-
+    max-width:650px;
     margin:auto;
-
     text-align:left;
 }
 
 .letter p{
-
-    font-size:17px;
-
-    line-height:2;
-
+    font-size:16px;
+    line-height:1.95;
     color:#644b60;
-
-    margin-bottom:20px;
+    margin-bottom:17px;
 }
 
 .letter .special{
-
     color:#d34f88;
 
     font-family:"Playfair Display",serif;
 
-    font-size:25px;
+    font-size:24px;
 
     font-style:italic;
 }
 
-/* =====================================================
+/* =========================
    MOMENT CARDS
-===================================================== */
+========================= */
 
 .moments{
-
     display:grid;
 
-    grid-template-columns:
-        repeat(2,1fr);
+    grid-template-columns:repeat(2,1fr);
 
-    gap:16px;
+    gap:15px;
 
     max-width:720px;
 
@@ -694,64 +594,53 @@ body{
 }
 
 .moment{
-
     position:relative;
 
-    padding:28px 22px;
+    min-height:175px;
 
-    min-height:180px;
+    padding:27px 21px;
 
-    border-radius:26px;
+    border-radius:25px;
 
-    background:
-        rgba(255,255,255,.55);
+    background:rgba(255,255,255,.55);
 
-    border:
-        1px solid rgba(255,255,255,.85);
-
-    cursor:pointer;
+    border:1px solid rgba(255,255,255,.85);
 
     text-align:left;
 
-    transition:
-        transform .35s ease,
-        box-shadow .35s ease,
-        background .35s ease;
+    cursor:pointer;
+
+    transition:.35s ease;
 }
 
 .moment:hover{
+    transform:translateY(-5px);
 
-    transform:translateY(-6px);
-
-    background:
-        rgba(255,255,255,.88);
+    background:rgba(255,255,255,.88);
 
     box-shadow:
         0 18px 40px rgba(100,50,100,.10);
 }
 
 .moment-number{
+    color:#b27193;
 
-    font-size:11px;
+    font-size:10px;
 
     letter-spacing:2px;
-
-    color:#b27193;
 }
 
 .moment h3{
-
-    margin:12px 0 8px;
-
-    color:#864c70;
+    margin:11px 0 8px;
 
     font-family:"Playfair Display",serif;
 
-    font-size:21px;
+    color:#864c70;
+
+    font-size:20px;
 }
 
 .moment-preview{
-
     color:#8b7383;
 
     font-size:13px;
@@ -760,7 +649,6 @@ body{
 }
 
 .moment-hidden{
-
     max-height:0;
 
     overflow:hidden;
@@ -773,16 +661,14 @@ body{
 }
 
 .moment.open .moment-hidden{
-
-    max-height:250px;
+    max-height:180px;
 
     opacity:1;
 
-    margin-top:14px;
+    margin-top:13px;
 }
 
 .moment.open{
-
     background:
         linear-gradient(
             135deg,
@@ -792,30 +678,27 @@ body{
 }
 
 .tap{
-
     position:absolute;
 
-    right:18px;
-    bottom:17px;
-
-    font-size:10px;
+    right:17px;
+    bottom:15px;
 
     color:#b26b91;
+
+    font-size:10px;
 }
 
-/* =====================================================
+/* =========================
    QUOTE
-===================================================== */
+========================= */
 
 .quote{
-
     max-width:650px;
-
     margin:auto;
 
     font-family:"Playfair Display",serif;
 
-    font-size:clamp(24px,5vw,36px);
+    font-size:clamp(24px,5vw,35px);
 
     line-height:1.5;
 
@@ -825,19 +708,70 @@ body{
 }
 
 .quote span{
-
     color:#d94f8b;
 }
 
-/* =====================================================
-   PROPOSAL
-===================================================== */
+/* =========================
+   CONFESSION PAUSE
+========================= */
 
-.proposal{
+.pause-box{
+    min-height:230px;
 
-    padding:65px 25px;
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-direction:column;
 
     text-align:center;
+}
+
+.pause-line{
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(25px,5vw,38px);
+
+    color:#68405d;
+
+    opacity:0;
+
+    transform:translateY(15px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.pause-line.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.pause-small{
+    margin-top:15px;
+
+    color:#97748b;
+
+    font-size:13px;
+
+    opacity:0;
+
+    transition:opacity 1s ease;
+}
+
+.pause-small.show{
+    opacity:1;
+}
+
+/* =========================
+   PROPOSAL
+========================= */
+
+.proposal{
+    padding:65px 25px;
 
     background:
         linear-gradient(
@@ -848,19 +782,17 @@ body{
 }
 
 .proposal h2{
+    margin:12px 0;
 
     font-family:"Playfair Display",serif;
 
-    font-size:clamp(37px,7vw,58px);
-
-    margin:12px 0;
+    font-size:clamp(40px,8vw,60px);
 
     color:#4b2944;
 }
 
 .proposal-text{
-
-    max-width:590px;
+    max-width:570px;
 
     margin:0 auto 30px;
 
@@ -871,49 +803,41 @@ body{
     font-size:16px;
 }
 
-.proposal-warning{
+.question{
+    margin-bottom:25px;
 
-    max-width:500px;
+    font-family:"Playfair Display",serif;
 
-    margin:25px auto;
+    font-size:28px;
+
+    color:#d14d87;
+}
+
+.choice-note{
+    max-width:450px;
+
+    margin:22px auto 0;
 
     color:#9b7089;
 
-    font-size:13px;
+    font-size:12px;
 
     line-height:1.7;
 
     font-style:italic;
 }
 
-.question{
-
-    font-family:"Playfair Display",serif;
-
-    font-size:27px;
-
-    color:#d14d87;
-
-    margin-bottom:25px;
-}
-
-/* =====================================================
+/* =========================
    SECRET
-===================================================== */
+========================= */
 
 .secret{
-
     margin-top:30px;
 
     text-align:center;
-
-    color:#a27491;
-
-    font-size:12px;
 }
 
 .secret button{
-
     border:0;
 
     background:none;
@@ -925,10 +849,11 @@ body{
     cursor:pointer;
 
     font:inherit;
+
+    font-size:12px;
 }
 
 .secret-message{
-
     max-height:0;
 
     overflow:hidden;
@@ -938,33 +863,31 @@ body{
     transition:
         max-height .8s ease,
         opacity .8s ease;
-
-    font-family:"Playfair Display",serif;
-
-    font-style:italic;
-
-    color:#75445f;
-
-    font-size:21px;
-
-    line-height:1.7;
 }
 
 .secret-message.show{
-
     max-height:300px;
 
     opacity:1;
 
     margin-top:20px;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:20px;
+
+    line-height:1.7;
+
+    font-style:italic;
+
+    color:#75445f;
 }
 
-/* =====================================================
+/* =========================
    SUCCESS
-===================================================== */
+========================= */
 
 .success{
-
     min-height:90vh;
 
     display:flex;
@@ -977,97 +900,67 @@ body{
 }
 
 .success-card{
+    width:100%;
 
     padding:70px 30px;
 
-    width:100%;
-
-    animation:successAppear 1.2s ease;
+    animation:successIn 1.2s ease;
 }
 
-@keyframes successAppear{
-
+@keyframes successIn{
     from{
-
         opacity:0;
-
-        transform:
-            translateY(35px)
-            scale(.96);
+        transform:translateY(35px) scale(.96);
     }
 
     to{
-
         opacity:1;
-
-        transform:
-            translateY(0)
-            scale(1);
+        transform:translateY(0) scale(1);
     }
-
 }
 
 .success-heart{
+    font-size:80px;
 
-    font-size:85px;
-
-    animation:successPulse 1.5s infinite;
-}
-
-@keyframes successPulse{
-
-    0%,100%{
-
-        transform:scale(1);
-    }
-
-    50%{
-
-        transform:scale(1.15);
-    }
-
+    animation:pulse 1.5s infinite;
 }
 
 .success h1{
+    margin:15px 0;
 
     font-family:"Playfair Display",serif;
 
     font-size:clamp(42px,8vw,70px);
 
-    margin:15px 0;
-
     color:#d64e8b;
 }
 
 .success-subtitle{
+    margin-bottom:27px;
 
     font-family:"Playfair Display",serif;
 
     font-style:italic;
 
-    font-size:25px;
+    font-size:24px;
 
     color:#80536e;
-
-    margin-bottom:28px;
 }
 
 .success p{
-
-    max-width:620px;
+    max-width:600px;
 
     margin:auto;
 
     color:#6c5366;
 
-    line-height:2;
+    font-size:16px;
 
-    font-size:17px;
+    line-height:2;
 }
 
 .names{
-
-    margin-top:35px;
+    margin-top:32px;
 
     font-family:"Playfair Display",serif;
 
@@ -1077,145 +970,97 @@ body{
 }
 
 .names span{
-
     margin:0 10px;
 
     color:#b18ba4;
 }
 
 .signature{
-
-    margin-top:30px;
+    margin-top:25px;
 
     color:#8d627c;
 
-    font-size:13px;
+    font-size:12px;
 }
 
-/* =====================================================
+/* =========================
    FOOTER
-===================================================== */
+========================= */
 
 footer{
+    margin-top:30px;
 
     text-align:center;
-
-    margin-top:30px;
 
     color:#a47d96;
 
     font-size:12px;
 }
 
-/* =====================================================
+/* =========================
    MOBILE
-===================================================== */
+========================= */
 
 @media(max-width:700px){
 
     .page{
-
         width:94%;
     }
 
     .hero-card{
-
         padding:55px 20px;
     }
 
     .section{
-
         padding:40px 20px;
     }
 
     .moments{
-
         grid-template-columns:1fr;
     }
 
-    .letter p{
+    .timeline{
+        padding:30px 20px;
+    }
 
-        font-size:16px;
+    .letter p{
+        font-size:15.5px;
     }
 
     .btn{
-
         width:100%;
-
         max-width:280px;
-
         margin:5px auto;
     }
 
-    .timeline{
-
-        padding:30px 15px 40px;
-    }
-
-    .timeline::before{
-
-        left:12px;
-    }
-
-    .timeline-item,
-    .timeline-item.right{
-
-        width:100%;
-
-        margin-left:0;
-
-        padding:
-            15px 15px 25px 40px;
-
-        text-align:left;
-    }
-
-    .left .timeline-dot,
-    .right .timeline-dot{
-
-        left:6px;
-        right:auto;
-    }
-
     .music-btn{
-
         right:15px;
         bottom:15px;
     }
-
 }
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- =====================================================
+<!-- =========================
      CINEMATIC INTRO
-===================================================== -->
+========================= -->
 
 <div id="cinematic">
 
     <div class="cinematic-content">
 
         <div class="cinematic-line">
-
             Zahreen, kuch moments sirf moments nahi hote...
-
         </div>
 
         <div class="cinematic-name">
-
             Zahreen
-
         </div>
 
         <div class="cinematic-small">
-
-            There is something I have been wanting to tell you
-
+            Ek baat jo dil mein thi
         </div>
 
     </div>
@@ -1223,12 +1068,16 @@ footer{
 </div>
 
 
-<!-- FLOATING HEARTS -->
+<!-- =========================
+     HEARTS
+========================= -->
 
 <div id="floating-hearts"></div>
 
 
-<!-- OPTIONAL MUSIC -->
+<!-- =========================
+     MUSIC
+========================= -->
 
 <audio id="music" loop preload="none">
     <source src="music.mp3" type="audio/mpeg">
@@ -1246,10 +1095,9 @@ footer{
 
 <main class="page">
 
-
-<!-- =====================================================
+<!-- =========================
      HERO
-===================================================== -->
+========================= -->
 
 <section id="hero" class="hero">
 
@@ -1292,32 +1140,28 @@ footer{
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      STORY
-===================================================== -->
+========================= -->
 
 <section id="story" class="hidden">
 
 
-<!-- =====================================================
-     KINETEX CENTERPIECE
-===================================================== -->
+<!-- KINETEX -->
 
-<div class="glass section kinetex-card">
+<div class="glass section kinetex">
 
-    <div class="kinetex-top">
+    <div class="kinetex-head">
 
-        <div class="kinetex-date">
+        <div class="kinetex-badge">
             The beginning
         </div>
 
         <div class="kinetex-title">
-
             The Day I First Noticed You
-
         </div>
 
-        <p class="kinetex-subtitle">
+        <p class="kinetex-text">
 
             Kuch beginnings plan nahi hoti...
             bas achanak ho jati hain.
@@ -1330,80 +1174,85 @@ footer{
     <div class="timeline">
 
 
-        <div class="timeline-item left">
+        <div class="timeline-item">
 
-            <div class="timeline-dot"></div>
+            <div class="dot"></div>
 
-            <h3>
-                Pehli Nazar
-            </h3>
+            <div class="timeline-content">
 
-            <p>
+                <h3>
+                    Pehli Baar
+                </h3>
 
-                Mujhe aaj bhi yaad hai
-                jab maine tumhein pehli baar
-                KineTex mein dekha tha.
+                <p>
+                    Jab maine tumhein pehli baar
+                    KineTex mein dekha.
+                </p>
 
-            </p>
-
-        </div>
-
-
-        <div class="timeline-item right">
-
-            <div class="timeline-dot"></div>
-
-            <h3>
-                Kuch Alag Tha
-            </h3>
-
-            <p>
-
-                Sach bolun to mujhe khud nahi pata
-                ke kyun, lekin us waqt mujhe
-                kuch alag sa mehsoos hua.
-
-            </p>
+            </div>
 
         </div>
 
 
-        <div class="timeline-item left">
+        <div class="timeline-item">
 
-            <div class="timeline-dot"></div>
+            <div class="dot"></div>
 
-            <h3>
-                Ek Chota Sa Moment
-            </h3>
+            <div class="timeline-content">
 
-            <p>
+                <h3>
+                    Kuch Alag Mehsoos Hua
+                </h3>
 
-                Shayad tumhare liye woh
-                bilkul normal moment tha,
-                lekin pata nahi kyun
-                woh mere mind mein reh gaya.
+                <p>
+                    Mujhe khud nahi pata kyun,
+                    lekin us waqt mujhe kuch
+                    alag sa mehsoos hua.
+                </p>
 
-            </p>
+            </div>
 
         </div>
 
 
-        <div class="timeline-item right">
+        <div class="timeline-item">
 
-            <div class="timeline-dot"></div>
+            <div class="dot"></div>
 
-            <h3>
-                Aur Phir...
-            </h3>
+            <div class="timeline-content">
 
-            <p>
+                <h3>
+                    Woh Chota Sa Moment
+                </h3>
 
-                Mujhe nahi pata tha ke
-                woh ek chota sa moment
-                dheere dheere itni beautiful
-                feeling mein badal jayega.
+                <p>
+                    Shayad tumhare liye normal tha,
+                    lekin pata nahi kyun
+                    woh moment mere mind mein reh gaya.
+                </p>
 
-            </p>
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="dot"></div>
+
+            <div class="timeline-content">
+
+                <h3>
+                    Phir Dheere Dheere...
+                </h3>
+
+                <p>
+                    Mujhe samajh aane laga ke
+                    tum mere liye sirf ek normal
+                    person nahi rahi.
+                </p>
+
+            </div>
 
         </div>
 
@@ -1413,9 +1262,7 @@ footer{
 </div>
 
 
-<!-- =====================================================
-     NATURAL MESSAGE
-===================================================== -->
+<!-- SHORT REAL MESSAGE -->
 
 <div class="glass section">
 
@@ -1430,61 +1277,34 @@ footer{
     <div class="letter">
 
         <p>
-
-            Zahreen, pehli baar tumhein KineTex mein
-            dekhne ke baad mujhe khud nahi pata tha
-            ke mere andar kya change hua hai.
-
+            Sach bolun Zahreen, mujhe khud nahi pata tha
+            ke tum mujhe itni achi lagne lago gi.
         </p>
 
         <p>
-
-            Bas itna pata tha ke tum mujhe
-            baaki logon se thodi different lagi.
-
+            Pehli baar KineTex mein tumhein dekha to
+            bas ek ajeeb si feeling hui.
+            Koi proper reason nahi tha...
+            bas tum kuch different lagi.
         </p>
 
         <p>
-
             Phir dheere dheere tumhari choti choti
             cheezein notice hone lagin.
-
-            Tumhari smile,
-            tumhara baat karne ka tareeqa,
-            tumhari presence...
-
+            Tumhari smile, tumhara andaaz,
+            aur tumhari presence.
         </p>
 
         <p>
-
-            Aur pata hi nahi chala ke kab
-            tumhara khayal randomly mere mind mein
-            aane laga.
-
+            Kabhi kabhi bina kisi reason ke
+            tumhara khayal aa jata tha.
+            Aur phir main khud se poochta tha...
         </p>
 
         <p>
-
-            Kabhi koi reason nahi hota tha,
-            phir bhi achanak tum yaad aa jati thi.
-
-        </p>
-
-        <p>
-
-            Tab mujhe laga ke shayad
-            ye sirf ek normal attraction nahi hai.
-
-        </p>
-
-        <p>
-
             <span class="special">
-
-                Shayad mujhe tum genuinely pasand aane lagi ho.
-
+                "Mujhe Zahreen itni achi kyun lagti hai?"
             </span>
-
         </p>
 
     </div>
@@ -1492,9 +1312,7 @@ footer{
 </div>
 
 
-<!-- =====================================================
-     INTERACTIVE MOMENTS
-===================================================== -->
+<!-- INTERACTIVE CARDS -->
 
 <div class="glass section">
 
@@ -1510,31 +1328,27 @@ footer{
     <div class="moments">
 
 
-        <!-- MOMENT 1 -->
-
-        <div class="moment" onclick="toggleMoment(this)">
+        <div
+            class="moment"
+            onclick="toggleMoment(this)">
 
             <div class="moment-number">
                 01 / FIRST
             </div>
 
             <h3>
-                The First Time I Noticed You
+                Pehli Baar Tum Notice Hui
             </h3>
 
             <p class="moment-preview">
-
-                KineTex mein woh pehla moment...
-
+                KineTex ka woh moment...
             </p>
 
             <div class="moment-hidden">
-
-                Mujhe nahi pata tha ke ek normal si
-                mulaqat mere liye itni memorable ban jayegi.
-                Bas tumhein dekha aur dil ne kaha...
-                "Is larki mein kuch alag hai."
-
+                Mujhe nahi pata tha ke ek normal
+                si mulaqat mere liye itni memorable
+                ban jayegi. Bas tumhein dekha aur
+                dil ne kaha — is larki mein kuch alag hai.
             </div>
 
             <div class="tap">
@@ -1544,31 +1358,26 @@ footer{
         </div>
 
 
-        <!-- MOMENT 2 -->
-
-        <div class="moment" onclick="toggleMoment(this)">
+        <div
+            class="moment"
+            onclick="toggleMoment(this)">
 
             <div class="moment-number">
                 02 / REALIZATION
             </div>
 
             <h3>
-                When Something Changed
+                Kab Mujhe Realize Hua
             </h3>
 
             <p class="moment-preview">
-
-                Kab mujhe realize hua...
-
+                Jab tumhara khayal aane laga...
             </p>
 
             <div class="moment-hidden">
-
                 Jab bina kisi reason ke tumhara khayal
-                baar baar aane laga.
-                Tab samajh aaya ke tum sirf
-                ek random person nahi rahi.
-
+                baar baar aane laga, tab samajh aaya
+                ke tum mere liye normal nahi rahi.
             </div>
 
             <div class="tap">
@@ -1578,32 +1387,28 @@ footer{
         </div>
 
 
-        <!-- MOMENT 3 -->
-
-        <div class="moment" onclick="toggleMoment(this)">
+        <div
+            class="moment"
+            onclick="toggleMoment(this)">
 
             <div class="moment-number">
                 03 / THE THOUGHT
             </div>
 
             <h3>
-                The Thought I Couldn't Ignore
+                Ek Thought Jo Ignore Nahi Hua
             </h3>
 
             <p class="moment-preview">
-
-                Ek sawaal jo baar baar aata tha...
-
+                Ek sawaal baar baar aata tha...
             </p>
 
             <div class="moment-hidden">
-
                 "Aakhir mujhe Zahreen itni achi
                 kyun lagti hai?"
 
-                Jitna ignore karne ki koshish ki,
-                utna hi jawab clear hota gaya.
-
+                Jitna ignore kiya, jawab utna hi
+                clear hota gaya.
             </div>
 
             <div class="tap">
@@ -1613,31 +1418,26 @@ footer{
         </div>
 
 
-        <!-- MOMENT 4 -->
-
-        <div class="moment" onclick="toggleMoment(this)">
+        <div
+            class="moment"
+            onclick="toggleMoment(this)">
 
             <div class="moment-number">
                 04 / UNSAID
             </div>
 
             <h3>
-                What I Wanted To Tell You
+                Jo Baat Kehne Se Dar Raha Tha
             </h3>
 
             <p class="moment-preview">
-
-                Jo baat main directly nahi keh saka...
-
+                Shayad ab keh deni chahiye...
             </p>
 
             <div class="moment-hidden">
-
                 Zahreen, tum mujhe genuinely pasand ho.
-                Aur main bas ye chahta hoon ke tumhein
+                Aur main chahta hoon ke tumhein
                 meri feelings ka pata ho.
-                Baaki decision tumhara hai.
-
             </div>
 
             <div class="tap">
@@ -1652,112 +1452,7 @@ footer{
 </div>
 
 
-<!-- =====================================================
-     FEELINGS
-===================================================== -->
-
-<div class="glass section">
-
-    <div class="section-label">
-        Jo main feel karta hoon
-    </div>
-
-    <h2 class="section-title">
-        Tum Mere Liye Kya Ho?
-    </h2>
-
-
-    <div class="moments">
-
-
-        <div class="moment">
-
-            <div class="moment-number">
-                FEELING 01
-            </div>
-
-            <h3>
-                Ek Khubsurat Ehsaas 🌷
-            </h3>
-
-            <p class="moment-preview">
-
-                Tumhari presence mein
-                kuch alag sa sukoon hai.
-
-            </p>
-
-        </div>
-
-
-        <div class="moment">
-
-            <div class="moment-number">
-                FEELING 02
-            </div>
-
-            <h3>
-                Ek Smile ✨
-            </h3>
-
-            <p class="moment-preview">
-
-                Tumhari smile genuinely
-                mere mood ko better kar sakti hai.
-
-            </p>
-
-        </div>
-
-
-        <div class="moment">
-
-            <div class="moment-number">
-                FEELING 03
-            </div>
-
-            <h3>
-                Ek Special Person 🦋
-            </h3>
-
-            <p class="moment-preview">
-
-                Tum mere liye ab
-                sirf "koi" nahi ho.
-
-            </p>
-
-        </div>
-
-
-        <div class="moment">
-
-            <div class="moment-number">
-                FEELING 04
-            </div>
-
-            <h3>
-                Something Real ❤️
-            </h3>
-
-            <p class="moment-preview">
-
-                Main jo feel karta hoon,
-                woh fake ya temporary nahi lagta.
-
-            </p>
-
-        </div>
-
-
-    </div>
-
-</div>
-
-
-<!-- =====================================================
-     QUOTE
-===================================================== -->
+<!-- QUOTE -->
 
 <div class="glass section">
 
@@ -1781,9 +1476,7 @@ footer{
 </div>
 
 
-<!-- =====================================================
-     HONEST CONFESSION
-===================================================== -->
+<!-- CONFESSION -->
 
 <div class="glass section">
 
@@ -1798,84 +1491,52 @@ footer{
     <div class="letter">
 
         <p>
-
             Zahreen, main bohat time se soch raha tha
             ke tumhein ye sab kaise bataun.
-
         </p>
 
         <p>
-
-            Simple message bhej deta,
-            lekin mujhe laga ke itni important baat
-            ko ek normal "I like you" ke message mein
-            khatam karna thoda kam hai.
-
+            Simple message bhej deta, lekin mujhe laga
+            ke itni important baat ko sirf
+            "I like you" keh kar khatam karna kam hai.
         </p>
 
         <p>
-
             Isliye ye website banayi.
-
-        </p>
-
-        <p>
-
             Shayad thodi crazy hai...
-            lekin ye exactly wahi hai jo main feel karta hoon.
-
+            lekin jo bhi hai, dil se hai.
         </p>
 
         <p>
-
             Main tumse koi fake promise nahi karna chahta.
-
-            Na ye kehna chahta hoon ke
-            sab kuch hamesha perfect rahega.
-
+            Main bas tumhein aur jaan'na chahta hoon,
+            tumhare saath baat karna chahta hoon,
+            aur dekhna chahta hoon ke humari story
+            kahan tak ja sakti hai.
         </p>
 
         <p>
-
-            Main bas ek chance chahta hoon.
-
+            Mujhe nahi pata tumhare dil mein
+            mere liye kya hai.
+            Aur main tumse kisi jawab ki expectation
+            bhi nahi rakhna chahta.
         </p>
 
         <p>
-
-            Tumhein aur jaanne ka.
-
-            Tumhare saath baat karne ka.
-
-            Tumhare saath achi memories banane ka.
-
+            Main bas itna chahta tha ke jo feeling
+            mere dil mein hai, woh tumse chhupi na rahe.
         </p>
 
         <p>
-
-            Aur shayad...
-
             <span class="special">
-
-                dekhne ka ke hum dono ki story
-                kahan tak ja sakti hai.
-
+                Mujhe tum pasand ho...
+                aur main tumhein aur jaan'na chahta hoon.
             </span>
-
         </p>
 
         <p>
-
-            Tumhari choice mere liye important hai.
-            Isliye main tum par koi pressure nahi dalna chahta.
-
-        </p>
-
-        <p>
-
-            Main bas apne dil ki baat
-            tum tak pohchana chahta tha.
-
+            Baaki... jo tumhare dil mein ho,
+            woh mujhe manzoor hoga. ❤️
         </p>
 
     </div>
@@ -1883,14 +1544,36 @@ footer{
 </div>
 
 
-<!-- =====================================================
-     FINAL PROPOSAL
-===================================================== -->
+<!-- EMOTIONAL PAUSE -->
+
+<div class="glass section pause-box">
+
+    <div
+        id="pauseLine"
+        class="pause-line">
+
+        Agar tum yahan tak aa gayi ho...
+
+    </div>
+
+    <div
+        id="pauseSmall"
+        class="pause-small">
+
+        to ab woh baat keh deta hoon
+        jo shayad sabse mushkil thi.
+
+    </div>
+
+</div>
+
+
+<!-- PROPOSAL -->
 
 <div class="glass section proposal">
 
     <div class="mini-label">
-        Ab woh sawaal...
+        The question
     </div>
 
     <h2>
@@ -1903,37 +1586,19 @@ footer{
 
         <br><br>
 
-        Kyunki ye sawaal main sirf
-        ek website par nahi pooch raha.
+        Kyunki ye sawaal main sirf website par nahi,
 
         <br>
 
         <strong>
-            Ye sawaal main dil se pooch raha hoon.
-        </strong>
-
-        <br><br>
-
-        Jab maine tumhein pehli baar KineTex mein dekha tha,
-        mujhe nahi pata tha ke woh chota sa moment
-        mere liye itna meaningful ban jayega.
-
-        <br><br>
-
-        Aaj main bas honestly keh sakta hoon...
-
-        <br>
-
-        <strong>
-            Mujhe tum pasand ho. ❤️
+            dil se pooch raha hoon.
         </strong>
 
     </p>
 
-
     <div class="question">
 
-        Kya tum mujhe ek chance dogi?
+        Kya tum mujhe ek chance dogi? ❤️
 
     </div>
 
@@ -1956,7 +1621,7 @@ footer{
     </button>
 
 
-    <p class="proposal-warning">
+    <p class="choice-note">
 
         Koi pressure nahi.
         Tumhara honest answer hi mere liye important hai.
@@ -1964,7 +1629,7 @@ footer{
     </p>
 
 
-    <!-- SECRET -->
+    <!-- SECRET P.S. -->
 
     <div class="secret">
 
@@ -1988,22 +1653,13 @@ footer{
 
             <br><br>
 
-            Main chahta tha ke agar kabhi tum mujhse poochho
-            ke "tumhein mujhmein kya pasand hai?"
+            Main bas chahta tha ke tumhein pata ho...
 
             <br>
 
-            to mere paas sirf ek jawab na ho...
-
-            <br><br>
-
-            <span>
-                "Pata nahi... bas tum achi lagti ho."
-            </span>
-
-            <br><br>
-
-            ❤️
+            <strong>
+                kisi ne tumhein genuinely special samjha hai. ❤️
+            </strong>
 
         </div>
 
@@ -2015,14 +1671,13 @@ footer{
 </section>
 
 
-<!-- =====================================================
+<!-- =========================
      SUCCESS
-===================================================== -->
+========================= -->
 
 <section
     id="success"
     class="success hidden">
-
 
     <div class="glass success-card">
 
@@ -2030,23 +1685,19 @@ footer{
             💖
         </div>
 
-
         <div class="mini-label">
-            And now...
+            A new beginning
         </div>
-
 
         <h1>
             You Said Yes.
         </h1>
-
 
         <div class="success-subtitle">
 
             So... this is where our story begins. ✨
 
         </div>
-
 
         <p>
 
@@ -2055,31 +1706,39 @@ footer{
             <br><br>
 
             Sach kahun to mujhe abhi bhi
-            believe nahi ho raha ke tumne "haan" kaha.
+            thoda believe nahi ho raha.
 
             🥹❤️
 
             <br><br>
 
-            Main nahi jaanta ke aage hamari story
+            Mujhe nahi pata aage humari story
             exactly kaisi hogi.
 
             <br><br>
 
-            Lekin main itna zaroor jaanta hoon ke
-            jis story ka first chapter
-            KineTex mein tumhein pehli baar dekhne se
-            shuru hua tha...
+            Lekin ek cheez hamesha special rahegi...
+
+            <br>
+
+            <strong>
+                jis din maine tumhein pehli baar
+                KineTex mein dekha tha.
+            </strong>
 
             <br><br>
 
-            uska next chapter
-            shayad hum dono mil kar likhenge.
+            Shayad wahi humari story ka
+            pehla chota sa moment tha.
 
             <br><br>
 
-            Aur main is beginning ko
-            dil se special rakhunga.
+            Aur ab...
+
+            <br>
+
+            hum dono mil kar iska
+            next chapter likh sakte hain. ❤️
 
         </p>
 
@@ -2102,65 +1761,64 @@ footer{
 
         </div>
 
-
     </div>
 
 </section>
 
 
 <footer>
-
     Made with feelings, not just code. ♡
-
 </footer>
-
 
 </main>
 
 
 <script>
 
-/* =====================================================
+/* =========================
    CINEMATIC INTRO
-===================================================== */
+========================= */
 
-setTimeout(()=>{
+setTimeout(function(){
 
-    const cinematic=
-        document.getElementById("cinematic");
-
-    cinematic.classList.add("hide");
+    document
+        .getElementById("cinematic")
+        .classList.add("hide");
 
 },5500);
 
 
-/* =====================================================
+/* =========================
    START STORY
-===================================================== */
+========================= */
 
 function startStory(){
 
-    document.getElementById("hero").style.display="none";
+    document
+        .getElementById("hero")
+        .style.display="none";
 
-    const story=
-        document.getElementById("story");
-
-    story.classList.remove("hidden");
+    document
+        .getElementById("story")
+        .classList.remove("hidden");
 
     window.scrollTo({
-
         top:0,
-
         behavior:"smooth"
-
     });
+
+    setTimeout(function(){
+
+        startPauseAnimation();
+
+    },1200);
 
 }
 
 
-/* =====================================================
+/* =========================
    MOMENT CARDS
-===================================================== */
+========================= */
 
 function toggleMoment(card){
 
@@ -2169,9 +1827,54 @@ function toggleMoment(card){
 }
 
 
-/* =====================================================
+/* =========================
+   PAUSE ANIMATION
+========================= */
+
+let pauseStarted=false;
+
+function startPauseAnimation(){
+
+    if(pauseStarted) return;
+
+    pauseStarted=true;
+
+    const line=
+        document.getElementById("pauseLine");
+
+    const small=
+        document.getElementById("pauseSmall");
+
+    const observer=
+        new IntersectionObserver(function(entries){
+
+            if(entries[0].isIntersecting){
+
+                line.classList.add("show");
+
+                setTimeout(function(){
+
+                    small.classList.add("show");
+
+                },2000);
+
+                observer.disconnect();
+            }
+
+        },{
+            threshold:.5
+        });
+
+    observer.observe(
+        document.querySelector(".pause-box")
+    );
+
+}
+
+
+/* =========================
    TAKE TIME
-===================================================== */
+========================= */
 
 function takeTime(){
 
@@ -2184,7 +1887,7 @@ function takeTime(){
     button.style.transform=
         "scale(1.03)";
 
-    setTimeout(()=>{
+    setTimeout(function(){
 
         button.innerHTML=
             "Mujhe Thoda Waqt Chahiye 🌸";
@@ -2197,60 +1900,53 @@ function takeTime(){
 }
 
 
-/* =====================================================
-   SECRET MESSAGE
-===================================================== */
+/* =========================
+   SECRET P.S.
+========================= */
 
 function showSecret(){
 
-    const message=
-        document.getElementById("secretMessage");
-
-    message.classList.toggle("show");
+    document
+        .getElementById("secretMessage")
+        .classList.toggle("show");
 
 }
 
 
-/* =====================================================
+/* =========================
    YES
-===================================================== */
+========================= */
 
 function sayYes(){
 
-    document.getElementById("story")
+    document
+        .getElementById("story")
         .style.display="none";
-
 
     const success=
         document.getElementById("success");
 
     success.classList.remove("hidden");
 
-
     window.scrollTo({
-
         top:0,
-
         behavior:"smooth"
-
     });
-
 
     celebration();
 
 }
 
 
-/* =====================================================
+/* =========================
    MUSIC
-===================================================== */
+========================= */
 
 const music=
     document.getElementById("music");
 
 const musicButton=
     document.getElementById("musicButton");
-
 
 let musicPlaying=false;
 
@@ -2259,14 +1955,16 @@ function toggleMusic(){
 
     if(!musicPlaying){
 
-        music.play().then(()=>{
+        music.play()
+        .then(function(){
 
             musicPlaying=true;
 
             musicButton.innerHTML=
                 "♫ Music Playing";
 
-        }).catch(()=>{
+        })
+        .catch(function(){
 
             musicButton.innerHTML=
                 "Add music.mp3 🎵";
@@ -2287,9 +1985,9 @@ function toggleMusic(){
 }
 
 
-/* =====================================================
+/* =========================
    FLOATING HEARTS
-===================================================== */
+========================= */
 
 const heartSymbols=[
     "♡",
@@ -2316,25 +2014,20 @@ function createHeart(){
             )
         ];
 
-
     heart.style.left=
         Math.random()*100+"vw";
-
 
     heart.style.fontSize=
         (14+Math.random()*18)+"px";
 
-
     heart.style.animationDuration=
         (7+Math.random()*6)+"s";
-
 
     document
         .getElementById("floating-hearts")
         .appendChild(heart);
 
-
-    setTimeout(()=>{
+    setTimeout(function(){
 
         heart.remove();
 
@@ -2342,13 +2035,12 @@ function createHeart(){
 
 }
 
-
 setInterval(createHeart,900);
 
 
-/* =====================================================
+/* =========================
    YES CELEBRATION
-===================================================== */
+========================= */
 
 function celebration(){
 
@@ -2362,12 +2054,10 @@ function celebration(){
         "🦋"
     ];
 
-
-    for(let i=0;i<75;i++){
+    for(let i=0;i<65;i++){
 
         const item=
             document.createElement("div");
-
 
         item.innerHTML=
             symbols[
@@ -2377,69 +2067,48 @@ function celebration(){
                 )
             ];
 
-
         item.style.position="fixed";
-
         item.style.left="50%";
-
         item.style.top="50%";
-
         item.style.zIndex="9999";
-
         item.style.pointerEvents="none";
-
         item.style.fontSize=
-            (16+Math.random()*25)+"px";
-
+            (16+Math.random()*24)+"px";
 
         document.body.appendChild(item);
 
-
         const x=
             (Math.random()-.5)*
-            window.innerWidth*1.5;
-
+            window.innerWidth*1.4;
 
         const y=
             (Math.random()-.5)*
-            window.innerHeight*1.5;
-
+            window.innerHeight*1.4;
 
         item.animate(
-
             [
-
                 {
                     transform:
                         "translate(-50%,-50%) scale(0)",
-
                     opacity:1
                 },
-
                 {
                     transform:
-                        `translate(${x}px,${y}px) scale(1.3)`,
-
+                        `translate(${x}px,${y}px) scale(1.2)`,
                     opacity:0
                 }
-
             ],
-
             {
-
                 duration:
-                    1600+
+                    1500+
                     Math.random()*1200,
 
                 easing:
                     "cubic-bezier(.2,.8,.3,1)"
-
             }
-
         );
 
-
-        setTimeout(()=>{
+        setTimeout(function(){
 
             item.remove();
 
