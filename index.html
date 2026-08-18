@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Zahreen ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    font-family: "Segoe UI", sans-serif;
+    background:
+        radial-gradient(circle at top left,#ffd6e7,transparent 35%),
+        radial-gradient(circle at bottom right,#d9c7ff,transparent 35%),
+        linear-gradient(135deg,#fff0f6,#f5efff);
+    color:#44213a;
+    overflow-x:hidden;
+}
+
+/* Floating Hearts */
+
+.heart{
+    position:fixed;
+    bottom:-30px;
+    font-size:20px;
+    opacity:.65;
+    animation:float 8s linear infinite;
+    pointer-events:none;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+    15%{opacity:.7;}
+    100%{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* Main */
+
+.container{
+    width:100%;
+    max-width:850px;
+    margin:auto;
+    padding:25px 18px 60px;
+}
+
+.card{
+    background:rgba(255,255,255,.72);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.8);
+    box-shadow:0 20px 70px rgba(119,55,105,.15);
+    border-radius:35px;
+    padding:45px 25px;
+    margin-top:25px;
+    text-align:center;
+}
+
+.small{
+    color:#b55c8d;
+    font-size:14px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+h1{
+    font-size:clamp(42px,10vw,75px);
+    margin:12px 0;
+    background:linear-gradient(90deg,#e34d8c,#9b63d8);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.subtitle{
+    font-size:18px;
+    line-height:1.7;
+    color:#704d65;
+}
+
+/* Opening */
+
+#opening{
+    min-height:90vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.open-heart{
+    width:100px;
+    height:100px;
+    margin:0 auto 25px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#ff72a8,#a86bea);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:45px;
+    box-shadow:0 15px 40px rgba(219,76,145,.35);
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.08);}
+}
+
+button{
+    border:none;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:700;
+    padding:15px 28px;
+    border-radius:50px;
+    margin:10px 5px;
+    transition:.3s;
+}
+
+.start-btn{
+    color:white;
+    background:linear-gradient(135deg,#ed5b9a,#9d65db);
+    box-shadow:0 10px 25px rgba(180,70,140,.25);
+}
+
+button:hover{
+    transform:translateY(-3px) scale(1.03);
+}
+
+/* Message */
+
+.hidden{
+    display:none;
+}
+
+.message{
+    font-size:19px;
+    line-height:2;
+    margin:30px auto;
+    max-width:680px;
+    color:#57364d;
+}
+
+.highlight{
+    color:#d74787;
+    font-weight:700;
+}
+
+/* Feelings */
+
+.feelings{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
+    margin:30px 0;
+}
+
+.feeling{
+    background:rgba(255,255,255,.75);
+    border-radius:22px;
+    padding:25px 15px;
+    box-shadow:0 8px 25px rgba(100,50,100,.08);
+}
+
+.feeling .emoji{
+    font-size:35px;
+}
+
+.feeling h3{
+    margin:10px 0 5px;
+    color:#a74378;
+}
+
+/* Proposal */
+
+.proposal{
+    margin-top:40px;
+    padding:40px 20px;
+    border-radius:30px;
+    background:linear-gradient(
+        135deg,
+        rgba(255,220,235,.7),
+        rgba(229,214,255,.7)
+    );
+}
+
+.proposal h2{
+    font-size:clamp(28px,6vw,45px);
+    color:#8e3d70;
+    margin-bottom:15px;
+}
+
+.question{
+    font-size:20px;
+    line-height:1.7;
+}
+
+.yes{
+    color:white;
+    background:linear-gradient(135deg,#ef4f91,#c44fd1);
+    padding:16px 35px;
+    font-size:18px;
+}
+
+.maybe{
+    color:#7a4262;
+    background:white;
+}
+
+/* Success */
+
+#success{
+    text-align:center;
+    animation:appear 1s ease;
+}
+
+@keyframes appear{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.big-heart{
+    font-size:90px;
+    animation:pulse 1.3s infinite;
+}
+
+.success-title{
+    font-size:clamp(35px,8vw,65px);
+    color:#d74386;
+    margin:15px 0;
+}
+
+.signature{
+    margin-top:35px;
+    font-size:18px;
+    color:#754963;
+}
+
+.name{
+    color:#d33f83;
+    font-weight:800;
+}
+
+/* Responsive */
+
+@media(max-width:600px){
+    .card{
+        padding:35px 18px;
+        border-radius:28px;
+    }
+
+    .message{
+        font-size:17px;
+        line-height:1.9;
+    }
+
+    .feelings{
+        grid-template-columns:1fr 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="hearts"></div>
+
+<div class="container">
+
+    <!-- OPENING -->
+
+    <section id="opening">
+        <div class="card">
+
+            <div class="open-heart">💗</div>
+
+            <div class="small">
+                A little something for
+            </div>
+
+            <h1>Zahreen</h1>
+
+            <p class="subtitle">
+                This isn't just a website...<br>
+                it's something I made because<br>
+                some feelings are too special for a simple message.
+            </p>
+
+            <button class="start-btn" onclick="openMessage()">
+                Open My Heart 💌
+            </button>
+
+        </div>
+    </section>
+
+
+    <!-- MAIN MESSAGE -->
+
+    <section id="main" class="hidden">
+
+        <div class="card">
+
+            <div class="small">
+                Dear Zahreen
+            </div>
+
+            <h1>There's Something...</h1>
+
+            <div class="message">
+
+                <p>
+                    I don't know exactly when it happened,
+                    but somewhere between the little conversations,
+                    the smiles and the moments I noticed you...
+                    <span class="highlight">you became special to me.</span>
+                </p>
+
+                <br>
+
+                <p>
+                    I've thought about saying this many times.
+                    But every time I tried to put my feelings
+                    into simple words, they never felt enough.
+                </p>
+
+                <br>
+
+                <p>
+                    So instead of sending you an ordinary message,
+                    I decided to create something that could say
+                    what my heart has been trying to say.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- FEELINGS -->
+
+        <div class="card">
+
+            <div class="small">
+                What you mean to me
+            </div>
+
+            <h2 style="font-size:35px;margin:15px;">
+                Maybe It's These Little Things 🌸
+            </h2>
+
+            <div class="feelings">
+
+                <div class="feeling">
+                    <div class="emoji">🌷</div>
+                    <h3>Your Smile</h3>
+                    <p>
+                        Somehow it makes ordinary moments
+                        feel a little better.
+                    </p>
+                </div>
+
+                <div class="feeling">
+                    <div class="emoji">✨</div>
+                    <h3>Your Presence</h3>
+                    <p>
+                        Even a small conversation with you
+                        can stay in my mind for hours.
+                    </p>
+                </div>
+
+                <div class="feeling">
+                    <div class="emoji">🦋</div>
+                    <h3>The Feeling</h3>
+                    <p>
+                        I can't perfectly explain it...
+                        I just know it's real.
+                    </p>
+                </div>
+
+                <div class="feeling">
+                    <div class="emoji">💖</div>
+                    <h3>You</h3>
+                    <p>
+                        Simply you.
+                        That's probably the best explanation.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- EMOTIONAL MESSAGE -->
+
+        <div class="card">
+
+            <div class="message">
+
+                <p>
+                    Zahreen...
+                </p>
+
+                <br>
+
+                <p>
+                    I don't want to make a huge promise
+                    or pretend that I know what the future holds.
+                </p>
+
+                <br>
+
+                <p>
+                    I just know that whenever I think about
+                    someone I'd genuinely like to know better,
+                    laugh with, support and create beautiful
+                    memories with...
+                </p>
+
+                <br>
+
+                <p>
+                    <span class="highlight">
+                        I think of you. ❤️
+                    </span>
+                </p>
+
+            </div>
+
+
+            <!-- PROPOSAL -->
+
+            <div class="proposal">
+
+                <h2>So, Zahreen...</h2>
+
+                <p class="question">
+
+                    Would you give me a chance
+                    to turn these feelings into
+                    something beautiful?
+
+                    <br><br>
+
+                    <strong>
+                        Will you be mine? 💗
+                    </strong>
+
+                </p>
+
+                <br>
+
+                <button class="yes" onclick="sayYes()">
+                    YES, I WILL ❤️
+                </button>
+
+                <button class="maybe" onclick="maybe()">
+                    I need a little time 🌸
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SUCCESS -->
+
+    <section id="success" class="hidden">
+
+        <div class="card">
+
+            <div class="big-heart">
+                💖
+            </div>
+
+            <div class="small">
+                My favorite answer
+            </div>
+
+            <div class="success-title">
+                You Said Yes! 🥹
+            </div>
+
+            <p class="message">
+
+                Zahreen, you have no idea how happy
+                you just made me.
+
+                <br><br>
+
+                I don't promise a perfect story.
+
+                <br>
+
+                But I promise that if you let me,
+                I'll make every moment worth remembering.
+
+                <br><br>
+
+                Maybe this is just the beginning
+                of something beautiful. 🌷
+
+            </p>
+
+            <div class="signature">
+
+                Made with a lot of feelings by<br>
+
+                <span class="name">
+                    Talib Ali ❤️
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<script>
+
+/* Open Message */
+
+function openMessage(){
+
+    document.getElementById("opening").style.display="none";
+
+    document.getElementById("main").classList.remove("hidden");
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* YES */
+
+function sayYes(){
+
+    document.getElementById("main").style.display="none";
+
+    document.getElementById("success").classList.remove("hidden");
+
+    createExplosion();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* Maybe */
+
+function maybe(){
+
+    alert(
+        "That's completely okay, Zahreen 🌸\n\n" +
+        "Take your time. Your feelings matter. ❤️"
+    );
+
+}
+
+
+/* Floating Hearts */
+
+function createHeart(){
+
+    const heart=document.createElement("div");
+
+    heart.className="heart";
+
+    const hearts=["❤️","💗","💖","💕","🌸","✨","🦋"];
+
+    heart.innerHTML=
+        hearts[Math.floor(Math.random()*hearts.length)];
+
+    heart.style.left=Math.random()*100+"vw";
+
+    heart.style.fontSize=
+        (15+Math.random()*20)+"px";
+
+    heart.style.animationDuration=
+        (5+Math.random()*5)+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },10000);
+}
+
+setInterval(createHeart,700);
+
+
+/* YES Celebration */
+
+function createExplosion(){
+
+    const emojis=["❤️","💖","💕","💗","✨","🌸","🥹"];
+
+    for(let i=0;i<60;i++){
+
+        const item=document.createElement("div");
+
+        item.innerHTML=
+            emojis[Math.floor(Math.random()*emojis.length)];
+
+        item.style.position="fixed";
+        item.style.left="50%";
+        item.style.top="50%";
+        item.style.fontSize=
+            (18+Math.random()*25)+"px";
+
+        item.style.zIndex="9999";
+        item.style.pointerEvents="none";
+
+        document.body.appendChild(item);
+
+        const x=(Math.random()-0.5)*window.innerWidth*1.5;
+        const y=(Math.random()-0.5)*window.innerHeight*1.5;
+
+        item.animate(
+            [
+                {
+                    transform:"translate(-50%,-50%) scale(0)",
+                    opacity:1
+                },
+                {
+                    transform:
+                    `translate(${x}px,${y}px) scale(1.5)`,
+                    opacity:0
+                }
+            ],
+            {
+                duration:1800+Math.random()*1000,
+                easing:"cubic-bezier(.2,.8,.3,1)"
+            }
+        );
+
+        setTimeout(()=>{
+            item.remove();
+        },3000);
+    }
+
+}
+
+</script>
+
+</body>
+  </html>
